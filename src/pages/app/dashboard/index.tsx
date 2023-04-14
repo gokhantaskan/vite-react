@@ -1,10 +1,13 @@
 import Button from "@mui/material/Button";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Helmet } from "react-helmet-async";
 
+import Dialog from "@/components/Dialog/Dialog";
 import { ThemeSwitch } from "@/components/ThemeSwitch/ThemeSwitch";
 
 const DashboardPage = () => {
+  const [dialogOpen, setDialogOpen] = useState(false);
+
   return (
     <Fragment>
       <Helmet titleTemplate={`%s | ${import.meta.env.VITE_APP_NAME}`}>
@@ -14,7 +17,7 @@ const DashboardPage = () => {
       <div className="container">
         <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
         <div className="space-y-2">
-          {Array(3)
+          {Array(1)
             .fill("")
             .map((_, i) => (
               <p key={i}>
@@ -47,8 +50,28 @@ const DashboardPage = () => {
               </p>
             ))}
         </div>
+        <Button onClick={() => setDialogOpen(true)}>Dialog</Button>
         <ThemeSwitch />
       </div>
+
+      <Dialog
+        open={dialogOpen}
+        onClose={() => setDialogOpen(false)}
+        title={"Repudiandae corrupti a, ducimus doloribus, pariatur tenetur"}
+      >
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum commodi
+        vitae, quibusdam facere dolores qui dolore eius aliquid, minima earum
+        nobis dolorem, consequuntur molestiae reprehenderit beatae? Dolorum
+        consequatur ullam reprehenderit asperiores. Blanditiis expedita tempore
+        doloribus qui? Fugiat quia ab est, aliquam, quidem laboriosam
+        praesentium animi molestias provident nihil fugit. Sed tempora impedit
+        doloribus eos perferendis dicta reprehenderit consectetur perspiciatis
+        necessitatibus soluta dolore, nihil commodi magnam nam cumque quo iusto
+        optio? Incidunt ipsum voluptatibus itaque soluta deleniti possimus
+        facilis natus accusantium ducimus aperiam asperiores sunt totam
+        doloremque eaque blanditiis vitae, quaerat suscipit sequi ipsa
+        consequuntur velit. Qui animi optio nostrum debitis.
+      </Dialog>
     </Fragment>
   );
 };

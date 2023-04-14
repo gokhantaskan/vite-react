@@ -1,13 +1,4 @@
-import {
-  amber,
-  blue,
-  fuchsia,
-  green,
-  indigo,
-  purple,
-  red,
-  slate,
-} from "tailwindcss/colors";
+import twColors from "tailwindcss/colors";
 
 export const colors = {
   inherit: "inherit",
@@ -15,14 +6,14 @@ export const colors = {
   current: "currentColor",
   black: "#000",
   white: "#fff",
-  primary: blue,
-  secondary: purple,
-  tertiary: fuchsia,
-  success: green,
-  info: indigo,
-  warning: amber,
-  danger: red,
-  gray: slate,
+  primary: twColors.blue,
+  secondary: twColors.purple,
+  tertiary: twColors.fuchsia,
+  success: twColors.green,
+  info: twColors.indigo,
+  warning: twColors.amber,
+  danger: twColors.red,
+  gray: twColors.neutral,
 };
 
 export const screens = {

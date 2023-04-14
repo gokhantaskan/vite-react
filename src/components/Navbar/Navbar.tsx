@@ -26,10 +26,7 @@ export function Navbar({ className }: { className?: string }) {
   return (
     <Fragment>
       <AppBar
-        className={clsx(
-          className,
-          "light:text-gray-900 light:bg-white border-b"
-        )}
+        className={clsx(className, "text-inherit light:bg-white border-b")}
         position="sticky"
         elevation={0}
         sx={{ zIndex: theme => theme.zIndex.drawer + 1 }}

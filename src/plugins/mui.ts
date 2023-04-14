@@ -19,12 +19,12 @@ const shadowValues = [
 
 const grayAlphaLight = (alpha?: number) =>
   chroma(colors.gray[300])
-    .alpha(alpha || 0.5)
+    .alpha(alpha || 0.75)
     .css();
 
 const grayAlphaDark = (alpha?: number) =>
   chroma(colors.gray[600])
-    .alpha(alpha || 0.5)
+    .alpha(alpha || 0.75)
     .css();
 
 const defaultOptions: Partial<ThemeOptions> = {
@@ -53,6 +53,17 @@ const defaultOptions: Partial<ThemeOptions> = {
       },
     },
     MuiDrawer: {
+      styleOverrides: {
+        paper: {
+          backgroundImage: "none",
+        },
+      },
+    },
+    MuiDialog: {
+      defaultProps: {
+        fullWidth: true,
+        maxWidth: "md",
+      },
       styleOverrides: {
         paper: {
           backgroundImage: "none",
@@ -88,6 +99,17 @@ const defaultOptions: Partial<ThemeOptions> = {
     MuiIconButton: {
       defaultProps: {
         color: "inherit",
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: ({ theme }) => {
+          return {
+            "&:not(.Mui-error):hover .MuiOutlinedInput-notchedOutline": {
+              borderColor: theme.palette.primary.light,
+            },
+          };
+        },
       },
     },
     MuiInputAdornment: {
