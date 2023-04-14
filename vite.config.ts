@@ -6,7 +6,6 @@ import react from "@vitejs/plugin-react";
 import dns from "dns";
 import { defineConfig } from "vite";
 import checker from "vite-plugin-checker";
-// import vitePluginRequire from "vite-plugin-require";
 
 dns.setDefaultResultOrder("verbatim");
 
@@ -21,10 +20,17 @@ export default defineConfig({
     // https://github.com/vitejs/vite/issues/8644#issuecomment-1159308803
     logOverride: { "this-is-undefined-in-esm": "silent" },
   },
+  // TODO: ignore msw js file in production build
+  build: {
+    rollupOptions: {
+      external: [
+        fileURLToPath(
+          new URL("./public/mockServiceWorker.js", import.meta.url)
+        ),
+      ],
+    },
+  },
   plugins: [
-    // vitePluginRequire({
-    //   fileRegex: /\.(js)$/,
-    // }),
     react({
       babel: {
         plugins: [
@@ -63,6 +69,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
+      "@img": fileURLToPath(new URL("./src/assets/img", import.meta.url)),
     },
   },
 });

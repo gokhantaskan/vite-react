@@ -18,12 +18,12 @@ const shadowValues = [
 ];
 
 const grayAlphaLight = (alpha?: number) =>
-  chroma(colors.gray[200])
+  chroma(colors.gray[300])
     .alpha(alpha || 0.75)
     .css();
 
 const grayAlphaDark = (alpha?: number) =>
-  chroma(colors.gray[700])
+  chroma(colors.gray[600])
     .alpha(alpha || 0.75)
     .css();
 
@@ -76,6 +76,18 @@ const defaultOptions: Partial<ThemeOptions> = {
     MuiMenu: {
       defaultProps: {
         elevation: 2,
+      },
+    },
+    MuiListItemButton: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          "&:hover": {
+            backgroundColor:
+              theme.palette.mode === "dark"
+                ? grayAlphaDark(0.5)
+                : grayAlphaLight(0.5),
+          },
+        }),
       },
     },
     MuiButtonBase: {
@@ -201,8 +213,8 @@ export const lightTheme = createTheme({
       disabled: colors.gray[500],
     },
     background: {
-      default: colors.white,
-      paper: colors.gray[100],
+      default: colors.gray[50],
+      paper: colors.white,
     },
   },
 });

@@ -23,7 +23,7 @@ function Dialog({
       <div className="divide-y">
         <div
           className={clsx(
-            "p-4 relative bg-white dark:bg-gray-900",
+            "p-4 relative",
             "flex justify-between items-baseline gap-4"
           )}
         >

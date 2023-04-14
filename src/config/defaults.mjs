@@ -13,7 +13,7 @@ export const colors = {
   info: twColors.indigo,
   warning: twColors.amber,
   danger: twColors.red,
-  gray: twColors.neutral,
+  gray: twColors.gray,
 };
 
 export const screens = {
