@@ -18,12 +18,12 @@ const shadowValues = [
 ];
 
 const grayAlphaLight = (alpha?: number) =>
-  chroma(colors.gray[300])
+  chroma(colors.gray[200])
     .alpha(alpha || 0.75)
     .css();
 
 const grayAlphaDark = (alpha?: number) =>
-  chroma(colors.gray[600])
+  chroma(colors.gray[700])
     .alpha(alpha || 0.75)
     .css();
 
@@ -63,6 +63,9 @@ const defaultOptions: Partial<ThemeOptions> = {
       defaultProps: {
         fullWidth: true,
         maxWidth: "md",
+        PaperProps: {
+          elevation: 4,
+        },
       },
       styleOverrides: {
         paper: {
