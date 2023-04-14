@@ -2,6 +2,8 @@
 
 Vite-React is a scaffold project for quickly setting up a React application with Vite, providing an integrated solution for using Tailwind CSS, Material-UI theme, twin.macro, and other essential libraries.
 
+https://astounding-toffee-68b49b.netlify.app/
+
 ## Features
 
 - Pre-configured with Vite for fast development and optimized builds
