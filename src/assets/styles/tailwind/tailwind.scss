@@ -1,0 +1,9 @@
+// This file is the entry point for Tailwind CSS
+@tailwind base;
+@import "base";
+
+@tailwind components;
+@import "components";
+
+@tailwind utilities;
+@import "utilities";

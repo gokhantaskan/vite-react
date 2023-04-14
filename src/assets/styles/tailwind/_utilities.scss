@@ -1,0 +1,15 @@
+@layer utilities {
+  .u-flex-center-screen {
+    @apply flex items-center justify-center h-screen;
+  }
+
+  .u-text {
+    &-error {
+      @apply text-danger-500 dark:text-danger-400;
+    }
+
+    &-muted {
+      @apply text-gray-600 dark:text-gray-300;
+    }
+  }
+}
