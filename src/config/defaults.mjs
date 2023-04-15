@@ -36,9 +36,9 @@ export const boxShadow = {
 
 export const borderRadius = {
   none: "0",
-  sm: "1px",
-  DEFAULT: "2px",
-  md: "4px",
+  sm: "2px",
+  DEFAULT: "4px",
+  md: "6px",
   lg: "8px",
   full: "1000rem",
 };

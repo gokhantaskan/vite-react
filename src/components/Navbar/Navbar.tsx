@@ -17,11 +17,21 @@ import { Link, useNavigate } from "react-router-dom";
 import tw from "twin.macro";
 
 import { ReactComponent as Logo } from "@/assets/img/logo.svg";
+import { routes } from "@/router";
 
 export function Navbar({ className }: { className?: string }) {
   const navigate = useNavigate();
   const drawerWidth = 240;
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const appRoutes = routes[0].children.find(
+    route => route.name === "App"
+  )?.children;
+
+  const handleItemClick = (route: any) => {
+    navigate(route.index ? "/" : `${route.path}`);
+    setMobileOpen(false);
+  };
 
   return (
     <Fragment>
@@ -89,21 +99,21 @@ export function Navbar({ className }: { className?: string }) {
         <Toolbar />
         <div className="overflow-auto">
           <List>
-            {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+            {appRoutes?.map((route, index) => (
               <ListItem
-                key={text}
+                key={index}
                 disablePadding
               >
-                <ListItemButton>
+                <ListItemButton onClick={() => handleItemClick(route)}>
                   {/* <ListItemIcon>
                     {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                   </ListItemIcon> */}
-                  <ListItemText primary={text} />
+                  <ListItemText primary={route.name} />
                 </ListItemButton>
               </ListItem>
             ))}
           </List>
-          <Divider />
+          {/* <Divider />
           <List>
             {["All mail", "Trash", "Spam"].map((text, index) => (
               <ListItem
@@ -111,14 +121,14 @@ export function Navbar({ className }: { className?: string }) {
                 disablePadding
               >
                 <ListItemButton>
-                  {/* <ListItemIcon>
+                  <ListItemIcon>
                     {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon> */}
+                  </ListItemIcon>
                   <ListItemText primary={text} />
                 </ListItemButton>
               </ListItem>
             ))}
-          </List>
+          </List> */}
         </div>
       </Drawer>
     </Fragment>

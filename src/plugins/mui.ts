@@ -81,11 +81,17 @@ const defaultOptions: Partial<ThemeOptions> = {
     MuiListItemButton: {
       styleOverrides: {
         root: ({ theme }) => ({
+          "&.Mui-focusVisible": {
+            backgroundColor:
+              theme.palette.mode === "light"
+                ? colors.gray[100]
+                : colors.gray[700],
+          },
           "&:hover": {
             backgroundColor:
-              theme.palette.mode === "dark"
-                ? grayAlphaDark(0.5)
-                : grayAlphaLight(0.5),
+              theme.palette.mode === "light"
+                ? colors.gray[200]
+                : colors.gray[600],
           },
         }),
       },

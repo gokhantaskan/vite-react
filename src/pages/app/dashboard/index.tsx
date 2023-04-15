@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import Dialog from "@/components/Dialog/Dialog";
 import { ThemeSwitch } from "@/components/ThemeSwitch/ThemeSwitch";
 
-const DashboardPage = () => {
+function DashboardPage() {
   const [dialogOpen, setDialogOpen] = useState(false);
 
   return (
@@ -77,6 +77,6 @@ const DashboardPage = () => {
       </Dialog>
     </Fragment>
   );
-};
+}
 
 export default DashboardPage;
