@@ -1,6 +1,7 @@
 import Button from "@mui/material/Button";
 import { Fragment, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 
 import Dialog from "@/components/Dialog/Dialog";
 import { ThemeSwitch } from "@/components/ThemeSwitch/ThemeSwitch";
@@ -10,7 +11,7 @@ const DashboardPage = () => {
 
   return (
     <Fragment>
-      <Helmet titleTemplate={`%s | ${import.meta.env.VITE_APP_NAME}`}>
+      <Helmet>
         <title>Dashboard</title>
       </Helmet>
 
@@ -51,6 +52,7 @@ const DashboardPage = () => {
             ))}
         </div>
         <Button onClick={() => setDialogOpen(true)}>Dialog</Button>
+        <Link to="/somewhere">Wrong Route Link</Link>
         <ThemeSwitch />
       </div>
 
@@ -58,6 +60,7 @@ const DashboardPage = () => {
         open={dialogOpen}
         onClose={() => setDialogOpen(false)}
         title={"Repudiandae corrupti a, ducimus doloribus, pariatur tenetur"}
+        titleTag="h2"
       >
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum commodi
         vitae, quibusdam facere dolores qui dolore eius aliquid, minima earum

@@ -4,6 +4,10 @@
   }
 
   .u-text {
+    &-primary {
+      @apply text-primary-500 dark:text-primary-400;
+    }
+
     &-error {
       @apply text-danger-500 dark:text-danger-400;
     }

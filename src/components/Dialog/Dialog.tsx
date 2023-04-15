@@ -3,22 +3,29 @@ import MuiDialog, { DialogProps } from "@mui/material/Dialog/Dialog";
 import IconButton from "@mui/material/IconButton";
 import clsx from "clsx";
 import { ReactNode } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 function Dialog({
   children,
   title,
+  titleTag = "h3",
   actions,
   onClose,
   ...props
 }: {
   title: ReactNode;
+  titleTag?: keyof JSX.IntrinsicElements;
   actions?: ReactNode;
   children: ReactNode;
 } & DialogProps) {
+  const Title = titleTag as keyof JSX.IntrinsicElements;
+  const titleId = uuidv4();
+
   return (
     <MuiDialog
       onClose={onClose}
       {...props}
+      aria-labelledby={titleId}
     >
       <div className="divide-y">
         <div
@@ -27,9 +34,12 @@ function Dialog({
             "flex justify-between items-baseline gap-4"
           )}
         >
-          <h3 className="m-0 leading-[32px] text-xl pr-[calc(32px+0.5rem)]">
+          <Title
+            id={titleId}
+            className="m-0 leading-[32px] text-xl pr-[calc(32px+0.5rem)]"
+          >
             {title}
-          </h3>
+          </Title>
 
           <IconButton
             aria-label="close"

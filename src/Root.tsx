@@ -1,6 +1,7 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { StyledEngineProvider } from "@mui/material/styles";
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { Outlet } from "react-router-dom";
 import { useEffectOnce } from "react-use";
 
@@ -31,12 +32,20 @@ function Root() {
   }, [theme]);
 
   return (
-    <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme === "dark" ? darkTheme : lightTheme}>
-        <CssBaseline />
-        <Outlet />
-      </ThemeProvider>
-    </StyledEngineProvider>
+    <Fragment>
+      <Helmet titleTemplate={`%s | ${import.meta.env.VITE_APP_NAME}`}>
+        <meta
+          name="description"
+          content="Vite-React is a scaffold project for quickly setting up a React application with Vite, providing an integrated solution for using Tailwind CSS, Material-UI theme, twin.macro, and other essential libraries."
+        />
+      </Helmet>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={theme === "dark" ? darkTheme : lightTheme}>
+          <CssBaseline />
+          <Outlet />
+        </ThemeProvider>
+      </StyledEngineProvider>
+    </Fragment>
   );
 }
 

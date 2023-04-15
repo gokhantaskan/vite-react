@@ -8,12 +8,14 @@ import { FC, useMemo, useState } from "react";
 interface InputFieldProps {
   name: string;
   label: string;
+  toggleable?: boolean;
 }
 
 const InputField: FC<InputFieldProps & TextFieldProps> = ({
   name,
   label,
   type = "text",
+  toggleable = true,
   helperText,
   ...props
 }) => {
@@ -35,7 +37,7 @@ const InputField: FC<InputFieldProps & TextFieldProps> = ({
       helperText={errorText || helperText}
       error={!!errorText}
       InputProps={{
-        endAdornment: isPasswordField && (
+        endAdornment: isPasswordField && toggleable && (
           <InputAdornment position="end">
             <IconButton
               type="button"

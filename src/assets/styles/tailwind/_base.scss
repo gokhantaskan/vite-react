@@ -25,6 +25,10 @@ body {
   @apply font-heading font-bold;
 }
 
+a:not([class]) {
+  @apply u-text-primary no-underline hover:underline;
+}
+
 @media (min-width: theme("screens.md")) {
   body {
     font-size: 1rem !important;

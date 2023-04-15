@@ -1,13 +1,17 @@
 import loadable from "@loadable/component";
 import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
 
+import { PageLoader } from "@/components/loaders/PageLoader";
 import Root from "@/Root";
 
 const App = loadable(() => import("@/pages/app"), {
-  fallback: <div>Loading...</div>,
+  fallback: <PageLoader />,
 });
-const Login = loadable(() => import("@/pages/auth/login"), {
-  fallback: <div>Loading...</div>,
+const LoginPage = loadable(() => import("@/pages/auth/login"), {
+  fallback: <PageLoader />,
+});
+const RegisterPage = loadable(() => import("@/pages/auth/register"), {
+  fallback: <PageLoader />,
 });
 
 const Dashboard = loadable(() => import("@/pages/app/dashboard"));
@@ -30,8 +34,12 @@ const router = createBrowserRouter([
         ],
       },
       {
-        element: <Login />,
+        element: <LoginPage />,
         path: `${authPath}/login`,
+      },
+      {
+        element: <RegisterPage />,
+        path: `${authPath}/signup`,
       },
       {
         path: "*",
