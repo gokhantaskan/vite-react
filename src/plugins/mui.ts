@@ -6,7 +6,12 @@ import {
 } from "@mui/material/styles";
 import chroma from "chroma-js";
 
-import { borderRadius, boxShadow, colors, screens } from "../config/defaults";
+import {
+  borderRadius,
+  boxShadow,
+  colors,
+  screens,
+} from "../../config/defaults";
 
 const breakpointValues = Object.fromEntries(
   Object.entries(screens).map(([key, val]) => [key, parseInt(val as string)])

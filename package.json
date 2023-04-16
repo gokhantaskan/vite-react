@@ -5,7 +5,8 @@
   "type": "module",
   "babelMacros": {
     "twin": {
-      "preset": "emotion"
+      "preset": "emotion",
+      "config": "tailwind.config.mjs"
     }
   },
   "scripts": {

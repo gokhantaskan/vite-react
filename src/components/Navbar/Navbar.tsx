@@ -95,16 +95,23 @@ export function Navbar({ className }: { className?: string }) {
       >
         <Toolbar />
         <div className="overflow-auto">
-          <List>
+          <List className="space-y-1">
             {appRoutes?.map((route, index) => (
               <ListItem
                 key={index}
-                disablePadding
+                className="py-0"
               >
                 <ListItemButton
                   component={NavLink}
                   to={route.index ? "/" : `${route.path}`}
                   onClick={handleItemClick}
+                  className="rounded"
+                  sx={{
+                    "&.active": {
+                      ...tw`bg-primary-500 hover:(bg-primary-600) focus:(bg-primary-600) text-white`,
+                      userSelect: "none",
+                    },
+                  }}
                 >
                   <ListItemText primary={route.name} />
                 </ListItemButton>

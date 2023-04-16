@@ -1,11 +1,6 @@
 import plugin from "tailwindcss/plugin";
 
-import {
-  borderRadius,
-  boxShadow,
-  colors,
-  screens,
-} from "./src/config/defaults";
+import { borderRadius, boxShadow, colors, screens } from "./config/defaults";
 
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -14,7 +9,10 @@ export default {
     preflight: false,
   },
   theme: {
-    colors,
+    colors: {
+      ...colors,
+      test: "#ffc700",
+    },
     borderRadius,
     screens,
     container: {
