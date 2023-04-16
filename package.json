@@ -10,7 +10,7 @@
     }
   },
   "scripts": {
-    "dev": "vite --force",
+    "dev": "vite",
     "build": "run-p type-check build-only",
     "build:staging": "npm run type-check && npm run build-only -- --mode staging",
     "build-only": "vite build",

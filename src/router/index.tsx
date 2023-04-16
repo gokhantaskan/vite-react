@@ -5,14 +5,19 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { PageLoader } from "@/components/loaders/PageLoader";
 import Root from "@/Root";
 
-const App = loadable(() => pMinDelay(import("@/pages/app"), 0), {
+const timeout = 1_000;
+
+const App = loadable(() => pMinDelay(import("@/pages/app"), timeout), {
   fallback: <PageLoader />,
 });
-const LoginPage = loadable(() => pMinDelay(import("@/pages/auth/login"), 0), {
-  fallback: <PageLoader />,
-});
+const LoginPage = loadable(
+  () => pMinDelay(import("@/pages/auth/login"), timeout),
+  {
+    fallback: <PageLoader />,
+  }
+);
 const RegisterPage = loadable(
-  () => pMinDelay(import("@/pages/auth/register"), 0),
+  () => pMinDelay(import("@/pages/auth/register"), timeout),
   {
     fallback: <PageLoader />,
   }
