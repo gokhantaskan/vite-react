@@ -1,35 +1,32 @@
+import styled from "@emotion/styled";
 import MenuIcon from "@mui/icons-material/Menu";
 import AppBar from "@mui/material/AppBar";
-import div from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
 import clsx from "clsx";
 import { Fragment, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import tw from "twin.macro";
 
 import { ReactComponent as Logo } from "@/assets/img/logo.svg";
 import { routes } from "@/router";
+
+const appRoutes = routes[0].children.find(
+  route => route.name === "App"
+)?.children;
 
 export function Navbar({ className }: { className?: string }) {
   const navigate = useNavigate();
   const drawerWidth = 240;
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const appRoutes = routes[0].children.find(
-    route => route.name === "App"
-  )?.children;
-
-  const handleItemClick = (route: any) => {
-    navigate(route.index ? "/" : `${route.path}`);
+  const handleItemClick = () => {
     setMobileOpen(false);
   };
 
@@ -104,31 +101,16 @@ export function Navbar({ className }: { className?: string }) {
                 key={index}
                 disablePadding
               >
-                <ListItemButton onClick={() => handleItemClick(route)}>
-                  {/* <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon> */}
+                <ListItemButton
+                  component={NavLink}
+                  to={route.index ? "/" : `${route.path}`}
+                  onClick={handleItemClick}
+                >
                   <ListItemText primary={route.name} />
                 </ListItemButton>
               </ListItem>
             ))}
           </List>
-          {/* <Divider />
-          <List>
-            {["All mail", "Trash", "Spam"].map((text, index) => (
-              <ListItem
-                key={text}
-                disablePadding
-              >
-                <ListItemButton>
-                  <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List> */}
         </div>
       </Drawer>
     </Fragment>

@@ -3,6 +3,11 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
+  "babelMacros": {
+    "twin": {
+      "preset": "emotion"
+    }
+  },
   "scripts": {
     "dev": "vite --force",
     "build": "run-p type-check build-only",
@@ -37,7 +42,7 @@
     "react-router-dom": "^6.10.0",
     "react-use": "^17.4.0",
     "sort-by": "^1.2.0",
-    "twin.macro": "^3.3.0",
+    "twin.macro": "^3.3.1",
     "uuid": "^9.0.0",
     "yup": "^1.1.0"
   },
