@@ -1,6 +1,7 @@
 import Button from "@mui/material/Button/Button";
 // import Divider from "@mui/material/Divider/Divider";
 import { Form, Formik } from "formik";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
 
@@ -8,9 +9,11 @@ import InputField from "@/components/InputField/InputField";
 import AuthLayout from "@/layouts/AuthLayout";
 
 function LoginPage() {
+  const [t] = useTranslation("common");
+
   return (
     <AuthLayout
-      title="Login"
+      title={t("login")}
       description="Welcome back"
     >
       {/* <Divider className="my-4">or</Divider> */}
@@ -44,13 +47,13 @@ function LoginPage() {
             type="submit"
             className="h-[56px] text-base"
           >
-            Login
+            {t("login")}
           </Button>
         </Form>
       </Formik>
       <div className="text-center">
         <p>Don&apos;t you have an account?</p>
-        <Link to="/auth/signup">Sign Up</Link>
+        <Link to="/auth/signup">{t("register")}</Link>
       </div>
     </AuthLayout>
   );

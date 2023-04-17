@@ -1,5 +1,7 @@
 import Button from "@mui/material/Button/Button";
 import { Form, Formik } from "formik";
+import { t } from "msw/lib/glossary-de6278a9";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
 
@@ -7,9 +9,11 @@ import InputField from "@/components/InputField/InputField";
 import AuthLayout from "@/layouts/AuthLayout";
 
 function RegisterPage() {
+  const [t] = useTranslation("common");
+
   return (
     <AuthLayout
-      title="Sign Up"
+      title={t("register")}
       description="Let's catch up the latest"
     >
       <Formik
@@ -59,13 +63,13 @@ function RegisterPage() {
             type="submit"
             className="h-[56px] text-base"
           >
-            Sign Up
+            {t("register")}
           </Button>
         </Form>
       </Formik>
       <div className="text-center">
         <p>Don&apos;t you have an account?</p>
-        <Link to="/auth/login">Log In</Link>
+        <Link to="/auth/login">{t("login")}</Link>
       </div>
     </AuthLayout>
   );

@@ -8,6 +8,7 @@ https://astounding-toffee-68b49b.netlify.app/
 
 - Pre-configured with Vite for fast development and optimized builds
 - Integrated styling solution using Tailwind CSS, Material-UI theme, and twin.macro
+- Integrated multi-language solution using i18n-next
 - Centralized theme configuration for both Tailwind and Material-UI
 - Type checking with TypeScript throughout development and build processes
 - Essential libraries included:

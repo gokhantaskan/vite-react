@@ -11,6 +11,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
 import clsx from "clsx";
 import { Fragment, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import tw from "twin.macro";
 
@@ -22,6 +23,7 @@ const appRoutes = routes[0].children.find(
 )?.children;
 
 export function Navbar({ className }: { className?: string }) {
+  const [t] = useTranslation("common");
   const navigate = useNavigate();
   const drawerWidth = 240;
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -65,13 +67,13 @@ export function Navbar({ className }: { className?: string }) {
               color="neutral"
               onClick={() => navigate("/auth/login")}
             >
-              Log In
+              {t("login")}
             </Button>
             <Button
               color="primary"
               onClick={() => navigate("/auth/signup")}
             >
-              Sign Up
+              {t("register")}
             </Button>
           </div>
         </Toolbar>

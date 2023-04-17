@@ -1,5 +1,6 @@
 import "./assets/styles/tailwind/tailwind.scss";
 
+// import loadable from "@loadable/component";
 import { Provider as JotaiProvider } from "jotai";
 import { useAtomsDebugValue, useAtomsDevtools } from "jotai-devtools";
 import React from "react";
@@ -7,6 +8,7 @@ import ReactDOM from "react-dom/client";
 import { HelmetProvider } from "react-helmet-async";
 
 import packageJson from "../package.json";
+import { I18nCustomProvider } from "./plugins/i18n-next";
 import Router from "./router";
 
 const DebugAtoms = () => {
@@ -19,14 +21,21 @@ const AtomDevtools = ({ children }: { children: React.ReactElement }) => {
   return children;
 };
 
+// if (import.meta.env.MODE === "development") {
+//   const _worker = loadable.lib(() => import("./mocks/browser"));
+//   _worker.worker.start();
+// }
+
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <JotaiProvider>
       <DebugAtoms />
       <AtomDevtools>
-        <HelmetProvider>
-          <Router />
-        </HelmetProvider>
+        <I18nCustomProvider>
+          <HelmetProvider>
+            <Router />
+          </HelmetProvider>
+        </I18nCustomProvider>
       </AtomDevtools>
     </JotaiProvider>
   </React.StrictMode>
