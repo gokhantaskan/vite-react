@@ -2,6 +2,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { StyledEngineProvider } from "@mui/material/styles";
 import { Fragment, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
 import { Outlet } from "react-router-dom";
 import { useEffectOnce } from "react-use";
 
@@ -9,12 +10,13 @@ import { darkTheme, lightTheme } from "./plugins/mui";
 import { useAppStore } from "./store/appStore";
 
 function Root() {
-  const { theme, setLanguage, setTheme } = useAppStore();
+  const { theme, language, setLanguage, setTheme } = useAppStore();
+  const { i18n } = useTranslation();
 
   useEffectOnce(() => {
     if (navigator?.language && !localStorage.getItem("language")) {
       const navigatorLanguage = navigator.language;
-      setLanguage(navigatorLanguage);
+      setLanguage(navigatorLanguage.split("-")[0].toLowerCase());
     }
 
     if (window?.matchMedia && !localStorage.getItem("theme")) {
@@ -30,6 +32,11 @@ function Root() {
     htmlTag.classList.remove("dark", "light");
     htmlTag.classList.add(theme);
   }, [theme]);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("lang", language);
+    i18n.changeLanguage(language);
+  }, [language]);
 
   return (
     <Fragment>

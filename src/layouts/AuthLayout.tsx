@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 import { ReactComponent as Logo } from "@/assets/img/icon.svg";
+import LocaleChanger from "@/components/LocaleChanger/LocaleChanger";
 
 interface IAuthLayoutProps {
   title: string;
@@ -17,7 +18,7 @@ function AuthLayout({ title, description, children }: IAuthLayoutProps) {
         <title>{title}</title>
       </Helmet>
 
-      <div className="flex-col u-flex-center-screen">
+      <div className="flex-col py-4 u-flex-center-screen">
         <div className="container">
           <div className="flex flex-col items-center gap-4">
             <Link
@@ -30,6 +31,10 @@ function AuthLayout({ title, description, children }: IAuthLayoutProps) {
             <h1 className="m-0 text-3xl font-bold">{title}</h1>
             <p className="m-0 text-lg u-text-muted">{description}</p>
             <div className="w-full max-w-lg">{children}</div>
+          </div>
+
+          <div className="flex mt-8">
+            <LocaleChanger className="mx-auto" />
           </div>
         </div>
       </div>

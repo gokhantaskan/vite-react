@@ -7,7 +7,7 @@ import commonTr from "../locales/tr/common.json";
 
 i18next.init({
   interpolation: { escapeValue: false },
-  lng: "en",
+  fallbackLng: "en",
   resources: {
     en: {
       common: commonEn,

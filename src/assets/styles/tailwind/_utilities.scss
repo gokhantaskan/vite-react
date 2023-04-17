@@ -1,6 +1,6 @@
 @layer utilities {
   .u-flex-center-screen {
-    @apply flex items-center justify-center h-screen;
+    @apply flex items-center justify-center min-h-screen;
   }
 
   .u-text {

@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { PageLoader } from "@/components/loaders/PageLoader";
 import Root from "@/Root";
 
-const timeout = 1_000;
+const timeout = 1;
 
 const App = loadable(() => pMinDelay(import("@/pages/app"), timeout), {
   fallback: <PageLoader />,
