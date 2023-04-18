@@ -31,8 +31,8 @@ const InputField: FC<InputFieldProps & TextFieldProps> = ({
   return (
     <TextField
       label={label}
-      {...field}
       {...props}
+      {...field}
       type={isPasswordField && showPassword ? "text" : type}
       helperText={errorText || helperText}
       error={!!errorText}

@@ -1,10 +1,11 @@
 import Button from "@mui/material/Button/Button";
 import { Form, Formik } from "formik";
-import { t } from "msw/lib/glossary-de6278a9";
+import { Fragment } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
 
+import CheckboxField from "@/components/CheckboxField/CheckboxField";
 import InputField from "@/components/InputField/InputField";
 import AuthLayout from "@/layouts/AuthLayout";
 
@@ -22,6 +23,7 @@ function RegisterPage() {
           email: "",
           password: "",
           passwordConfirmation: "",
+          termsAndConditions: false,
         }}
         validationSchema={Yup.object({
           fullName: Yup.string().min(2).required().label(t("fullName")),
@@ -30,7 +32,8 @@ function RegisterPage() {
           passwordConfirmation: Yup.string()
             .required()
             .oneOf([Yup.ref("password")], "Passwords must match")
-            .label("Password (repeat)"),
+            .label(`${t("password")} (${t("repeat")})`),
+          termsAndConditions: Yup.bool().oneOf([true], "Field must be checked"),
         })}
         onSubmit={values => {
           alert(JSON.stringify(values, null, 2));
@@ -56,6 +59,15 @@ function RegisterPage() {
             label={`${t("password")} (${t("repeat")})`}
             type="password"
             toggleable={false}
+          />
+          <CheckboxField
+            name="termsAndConditions"
+            label={
+              <Fragment>
+                I agree to the <a href="javascript:void(0)">terms</a> and{" "}
+                <a href="javascript:void(0)">conditions</a>
+              </Fragment>
+            }
           />
           <Button
             size="large"

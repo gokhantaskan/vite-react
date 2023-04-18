@@ -127,6 +127,13 @@ const defaultOptions: Partial<ThemeOptions> = {
         color: "inherit",
       },
     },
+    MuiFormLabel: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          color: theme.palette.text.secondary,
+        }),
+      },
+    },
     MuiOutlinedInput: {
       styleOverrides: {
         root: ({ theme }) => {
@@ -165,6 +172,16 @@ const defaultOptions: Partial<ThemeOptions> = {
               },
             }),
           }),
+      },
+    },
+    MuiCheckbox: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          color:
+            theme.palette.mode === "dark"
+              ? grayAlphaLight(0.5)
+              : grayAlphaDark(0.5),
+        }),
       },
     },
   },
