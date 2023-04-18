@@ -28,7 +28,7 @@ function AuthLayout({ title, description, children }: IAuthLayoutProps) {
             >
               <Logo className="h-12 text-primary-500 dark:text-white" />
             </Link>
-            <h1 className="m-0 text-3xl font-bold">{title}</h1>
+            <h1 className="m-0 text-3xl font-bold capitalize">{title}</h1>
             <p className="m-0 text-lg u-text-muted">{description}</p>
             <div className="w-full max-w-lg">{children}</div>
           </div>

@@ -19,11 +19,11 @@ import { ReactComponent as Logo } from "@/assets/img/logo.svg";
 import { routes } from "@/router";
 
 const appRoutes = routes[0].children.find(
-  route => route.name === "App"
+  route => route.name === "app"
 )?.children;
 
 export function Navbar({ className }: { className?: string }) {
-  const [t] = useTranslation("common");
+  const { t } = useTranslation("common");
   const navigate = useNavigate();
   const drawerWidth = 240;
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -97,11 +97,12 @@ export function Navbar({ className }: { className?: string }) {
       >
         <Toolbar />
         <div className="overflow-auto">
-          <List className="space-y-1">
+          <List className="px-4 space-y-1">
             {appRoutes?.map((route, index) => (
               <ListItem
                 key={index}
-                className="py-0"
+                disablePadding
+                disableGutters
               >
                 <ListItemButton
                   component={NavLink}
@@ -115,7 +116,10 @@ export function Navbar({ className }: { className?: string }) {
                     },
                   }}
                 >
-                  <ListItemText primary={route.name} />
+                  <ListItemText
+                    className="capitalize"
+                    primary={t([`${route.name}`])}
+                  />
                 </ListItemButton>
               </ListItem>
             ))}

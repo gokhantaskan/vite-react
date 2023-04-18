@@ -22,6 +22,12 @@ const RegisterPage = loadable(
     fallback: <PageLoader />,
   }
 );
+const ForgotPasswordPage = loadable(
+  () => pMinDelay(import("@/pages/auth/forgot-password"), timeout),
+  {
+    fallback: <PageLoader />,
+  }
+);
 
 const Dashboard = loadable(() => import("@/pages/app/dashboard"));
 const Settings = loadable(() => import("@/pages/app/settings"));
@@ -35,30 +41,35 @@ export const routes = [
     element: <Root />,
     children: [
       {
-        name: "App",
+        name: "app",
         element: <App />,
         children: [
           {
-            name: "Dashboard",
+            name: "dashboard",
             element: <Dashboard />,
             index: true,
           },
           {
-            name: "Settings",
+            name: "settings",
             path: "settings",
             element: <Settings />,
           },
         ],
       },
       {
-        name: "Login",
+        name: "login",
         element: <LoginPage />,
         path: `${authPath}/login`,
       },
       {
-        name: "Register",
+        name: "register",
         element: <RegisterPage />,
         path: `${authPath}/signup`,
+      },
+      {
+        name: "forgot-password",
+        element: <ForgotPasswordPage />,
+        path: `${authPath}/forgot-password`,
       },
       {
         path: "*",

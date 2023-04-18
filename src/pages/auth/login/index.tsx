@@ -23,24 +23,23 @@ function LoginPage() {
           password: "",
         }}
         validationSchema={Yup.object({
-          email: Yup.string().email().required().label("E-mail"),
-          password: Yup.string().min(6).required().label("Password"),
+          email: Yup.string().email().required().label(t("email")),
+          password: Yup.string().min(6).required().label(t("password")),
         })}
         onSubmit={values => {
-          alert(JSON.stringify(values));
+          alert(JSON.stringify(values, null, 2));
         }}
       >
         <Form className="grid w-full grid-cols-1 gap-4">
           <InputField
             name="email"
-            label="E-mail"
+            label={t("email")}
             type="email"
           />
           <InputField
             name="password"
-            label="Password"
+            label={t("password")}
             type="password"
-            helperText="Helper text about the password field"
           />
           <Button
             size="large"
@@ -51,6 +50,9 @@ function LoginPage() {
           </Button>
         </Form>
       </Formik>
+      <div className="my-4 text-center">
+        <Link to="/auth/forgot-password">{t("Forgot Password?")}</Link>
+      </div>
       <div className="text-center">
         <p>Don&apos;t you have an account?</p>
         <Link to="/auth/signup">{t("register")}</Link>

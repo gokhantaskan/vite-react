@@ -1,4 +1,11 @@
 {
+  "Forgot Password?": "Forgot password?",
+  "dashboard": "dashboard",
+  "email": "E-mail",
+  "fullName": "Full Name",
   "login": "Log In",
-  "register": "Sign Up"
+  "password": "Password",
+  "register": "Sign Up",
+  "settings": "settings",
+  "submit": "Submit"
 }

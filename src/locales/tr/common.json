@@ -1,4 +1,11 @@
 {
+  "Forgot Password?": "Şifreni mi unuttun?",
+  "dashboard": "panel",
+  "email": "E-posta",
+  "fullName": "Ad Soyad",
   "login": "Oturum aç",
-  "register": "Kaydol"
+  "password": "Şifre",
+  "register": "Kaydol",
+  "settings": "ayarlar",
+  "submit": "Gönder"
 }
