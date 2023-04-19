@@ -12,8 +12,6 @@ function LocaleChanger({ className }: { className?: string }) {
     i18n.changeLanguage(event.target.value);
   };
 
-  console.log(i18n.language);
-
   return (
     <select
       className={clsx("p-1 rounded-md", className)}

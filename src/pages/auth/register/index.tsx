@@ -1,5 +1,5 @@
 import Alert from "@mui/material/Alert/Alert";
-import { Form as form, Formik } from "formik";
+import { Formik } from "formik";
 import { Fragment, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
@@ -16,12 +16,13 @@ function RegisterPage() {
   const navigate = useNavigate();
   const [t] = useTranslation("common");
   const [error, setError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const formRef = useRef<HTMLFormElement | null>(null);
 
-  async function handleSubmit({ email, password, fullName }: User) {
-    console.log("submitting...");
-
+  async function handleRegister({ email, password, fullName }: User) {
+    setIsSubmitting(true);
     setError(null);
+
     await awaiter(1500);
     await signUp({ fullName, email, password })
       .then(() => {
@@ -31,6 +32,9 @@ function RegisterPage() {
       .catch(err => {
         console.error(err);
         setError(err.message);
+      })
+      .finally(() => {
+        setIsSubmitting(false);
       });
   }
 
@@ -68,7 +72,7 @@ function RegisterPage() {
         })}
         onSubmit={() => {}}
       >
-        {({ isSubmitting, validateForm, setTouched, values }) => (
+        {({ validateForm, setTouched, values }) => (
           <form
             className="grid w-full grid-cols-1 gap-4"
             noValidate
@@ -87,7 +91,7 @@ function RegisterPage() {
                 return;
               }
 
-              handleSubmit({
+              await handleRegister({
                 email: values.email,
                 password: values.password,
                 fullName: values.fullName,

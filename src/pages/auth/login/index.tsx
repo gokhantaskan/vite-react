@@ -1,20 +1,42 @@
 import Alert from "@mui/material/Alert/Alert";
-import { Form, Formik } from "formik";
-import { useState } from "react";
+import { Formik } from "formik";
+import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
-import { signIn } from "@/api/services/auth";
+import { signIn, User } from "@/api/services/auth";
 import Button from "@/components/Button/Button";
 import InputField from "@/components/InputField/InputField";
 import AuthLayout from "@/layouts/AuthLayout";
-import { awaiter } from "@/utils";
+import { awaiter, focusOnFirstInvalidInput } from "@/utils";
 
 function LoginPage() {
   const navigate = useNavigate();
   const [t] = useTranslation("common");
   const [error, setError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const formRef = useRef<HTMLFormElement | null>(null);
+
+  async function handleLogin({ email, password }: Omit<User, "fullName">) {
+    setIsSubmitting(true);
+    setError(null);
+
+    await awaiter(1500);
+    await signIn({ email, password })
+      .then(() => {
+        navigate("/", {
+          replace: true,
+        });
+      })
+      .catch(err => {
+        console.error(err);
+        setError(err.message);
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
+  }
 
   return (
     <AuthLayout
@@ -39,23 +61,32 @@ function LoginPage() {
           email: Yup.string().email().required().label(t("email")),
           password: Yup.string().min(6).required().label(t("password")),
         })}
-        onSubmit={async ({ email, password }) => {
-          setError(null);
-          await awaiter(1500);
-          await signIn({ email, password })
-            .then(() => {
-              navigate("/");
-            })
-            .catch(err => {
-              console.log(err);
-              setError(err.message);
-            });
-        }}
+        onSubmit={() => {}}
       >
-        {({ isSubmitting }) => (
-          <Form
+        {({ validateForm, setTouched, values }) => (
+          <form
             className="grid w-full grid-cols-1 gap-4"
             noValidate
+            ref={formRef}
+            onSubmit={async e => {
+              e.preventDefault();
+              const errors = await validateForm();
+
+              if (Object.keys(errors).length > 0) {
+                setTouched(
+                  Object.fromEntries(
+                    Object.keys(errors).map(key => [key, true])
+                  )
+                );
+                setTimeout(() => focusOnFirstInvalidInput(formRef.current), 0);
+                return;
+              }
+
+              await handleLogin({
+                email: values.email,
+                password: values.password,
+              });
+            }}
           >
             <InputField
               name="email"
@@ -77,7 +108,7 @@ function LoginPage() {
             >
               {t("login")}
             </Button>
-          </Form>
+          </form>
         )}
       </Formik>
       <div className="my-4 text-center">
