@@ -1,22 +1,57 @@
-import Button from "@mui/material/Button/Button";
-// import Divider from "@mui/material/Divider/Divider";
-import { Form, Formik } from "formik";
+import Alert from "@mui/material/Alert/Alert";
+import { Formik } from "formik";
+import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
+import { signIn, User } from "@/api/services/auth";
+import Button from "@/components/Button/Button";
 import InputField from "@/components/InputField/InputField";
 import AuthLayout from "@/layouts/AuthLayout";
+import { awaiter, focusOnFirstInvalidInput } from "@/utils";
 
 function LoginPage() {
+  const navigate = useNavigate();
   const [t] = useTranslation("common");
+  const [error, setError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const formRef = useRef<HTMLFormElement | null>(null);
+
+  async function handleLogin({ email, password }: Omit<User, "fullName">) {
+    setIsSubmitting(true);
+    setError(null);
+
+    await awaiter(1500);
+    await signIn({ email, password })
+      .then(() => {
+        navigate("/", {
+          replace: true,
+        });
+      })
+      .catch(err => {
+        console.error(err);
+        setError(err.message);
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
+  }
 
   return (
     <AuthLayout
       title={t("login")}
       description="Welcome back"
     >
-      {/* <Divider className="my-4">or</Divider> */}
+      {error && (
+        <Alert
+          className="mb-8"
+          severity="error"
+        >
+          {error}
+        </Alert>
+      )}
+
       <Formik
         initialValues={{
           email: "",
@@ -26,29 +61,55 @@ function LoginPage() {
           email: Yup.string().email().required().label(t("email")),
           password: Yup.string().min(6).required().label(t("password")),
         })}
-        onSubmit={values => {
-          alert(JSON.stringify(values, null, 2));
-        }}
+        onSubmit={() => {}}
       >
-        <Form className="grid w-full grid-cols-1 gap-4">
-          <InputField
-            name="email"
-            label={t("email")}
-            type="email"
-          />
-          <InputField
-            name="password"
-            label={t("password")}
-            type="password"
-          />
-          <Button
-            size="large"
-            type="submit"
-            className="h-[56px] text-base"
+        {({ validateForm, setTouched, values }) => (
+          <form
+            className="grid w-full grid-cols-1 gap-4"
+            noValidate
+            ref={formRef}
+            onSubmit={async e => {
+              e.preventDefault();
+              const errors = await validateForm();
+
+              if (Object.keys(errors).length > 0) {
+                setTouched(
+                  Object.fromEntries(
+                    Object.keys(errors).map(key => [key, true])
+                  )
+                );
+                setTimeout(() => focusOnFirstInvalidInput(formRef.current), 0);
+                return;
+              }
+
+              await handleLogin({
+                email: values.email,
+                password: values.password,
+              });
+            }}
           >
-            {t("login")}
-          </Button>
-        </Form>
+            <InputField
+              name="email"
+              label={t("email")}
+              type="email"
+              required
+            />
+            <InputField
+              name="password"
+              label={t("password")}
+              type="password"
+              required
+            />
+            <Button
+              size="large"
+              type="submit"
+              className="h-[56px] text-base"
+              loading={isSubmitting}
+            >
+              {t("login")}
+            </Button>
+          </form>
+        )}
       </Formik>
       <div className="my-4 text-center">
         <Link to="/auth/forgot-password">{t("Forgot Password?")}</Link>
