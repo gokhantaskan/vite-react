@@ -2,6 +2,7 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import TextField, { TextFieldProps } from "@mui/material/TextField";
+import clsx from "clsx";
 import { useField } from "formik";
 import { FC, useMemo, useState } from "react";
 
@@ -33,6 +34,7 @@ const InputField: FC<InputFieldProps & TextFieldProps> = ({
       label={label}
       {...props}
       {...field}
+      className={clsx(props.className, errorText && "in-error-state")}
       type={isPasswordField && showPassword ? "text" : type}
       helperText={errorText || helperText}
       error={!!errorText}
@@ -47,6 +49,7 @@ const InputField: FC<InputFieldProps & TextFieldProps> = ({
             </IconButton>
           </InputAdornment>
         ),
+        ...(errorText && { "aria-invalid": !!errorText }),
       }}
     />
   );

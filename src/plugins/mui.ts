@@ -23,13 +23,13 @@ const shadowValues = [
 ];
 
 const grayAlphaLight = (alpha?: number) =>
-  chroma(colors.gray[300])
-    .alpha(alpha || 0.75)
+  chroma(colors.gray[200])
+    .alpha(alpha || 0.675)
     .css();
 
 const grayAlphaDark = (alpha?: number) =>
   chroma(colors.gray[600])
-    .alpha(alpha || 0.75)
+    .alpha(alpha || 0.675)
     .css();
 
 const defaultOptions: Partial<ThemeOptions> = {
@@ -45,16 +45,21 @@ const defaultOptions: Partial<ThemeOptions> = {
     borderRadius: parseInt(borderRadius.DEFAULT),
   },
   components: {
+    MuiAlert: {
+      defaultProps: {
+        variant: "filled",
+      },
+    },
     MuiBackdrop: {
       styleOverrides: {
-        root: ({ theme }) => {
-          return {
-            backgroundColor:
-              theme.palette.mode === "dark"
-                ? grayAlphaDark()
-                : grayAlphaLight(),
-          };
-        },
+        root: ({ theme }) => ({
+          backgroundColor:
+            theme.palette.mode === "dark" ? grayAlphaDark() : grayAlphaLight(),
+          // "&.MuiModal-backdrop": {
+          //   backdropFilter: "blur(3px)",
+          //   willChange: "backdrop-filter",
+          // },
+        }),
       },
     },
     MuiDrawer: {

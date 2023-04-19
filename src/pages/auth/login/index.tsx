@@ -1,22 +1,35 @@
-import Button from "@mui/material/Button/Button";
-// import Divider from "@mui/material/Divider/Divider";
+import Alert from "@mui/material/Alert/Alert";
 import { Form, Formik } from "formik";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
+import { signIn } from "@/api/services/auth";
+import Button from "@/components/Button/Button";
 import InputField from "@/components/InputField/InputField";
 import AuthLayout from "@/layouts/AuthLayout";
+import { awaiter } from "@/utils";
 
 function LoginPage() {
+  const navigate = useNavigate();
   const [t] = useTranslation("common");
+  const [error, setError] = useState<string | null>(null);
 
   return (
     <AuthLayout
       title={t("login")}
       description="Welcome back"
     >
-      {/* <Divider className="my-4">or</Divider> */}
+      {error && (
+        <Alert
+          className="mb-8"
+          severity="error"
+        >
+          {error}
+        </Alert>
+      )}
+
       <Formik
         initialValues={{
           email: "",
@@ -26,29 +39,46 @@ function LoginPage() {
           email: Yup.string().email().required().label(t("email")),
           password: Yup.string().min(6).required().label(t("password")),
         })}
-        onSubmit={values => {
-          alert(JSON.stringify(values, null, 2));
+        onSubmit={async ({ email, password }) => {
+          setError(null);
+          await awaiter(1500);
+          await signIn({ email, password })
+            .then(() => {
+              navigate("/");
+            })
+            .catch(err => {
+              console.log(err);
+              setError(err.message);
+            });
         }}
       >
-        <Form className="grid w-full grid-cols-1 gap-4">
-          <InputField
-            name="email"
-            label={t("email")}
-            type="email"
-          />
-          <InputField
-            name="password"
-            label={t("password")}
-            type="password"
-          />
-          <Button
-            size="large"
-            type="submit"
-            className="h-[56px] text-base"
+        {({ isSubmitting }) => (
+          <Form
+            className="grid w-full grid-cols-1 gap-4"
+            noValidate
           >
-            {t("login")}
-          </Button>
-        </Form>
+            <InputField
+              name="email"
+              label={t("email")}
+              type="email"
+              required
+            />
+            <InputField
+              name="password"
+              label={t("password")}
+              type="password"
+              required
+            />
+            <Button
+              size="large"
+              type="submit"
+              className="h-[56px] text-base"
+              loading={isSubmitting}
+            >
+              {t("login")}
+            </Button>
+          </Form>
+        )}
       </Formik>
       <div className="my-4 text-center">
         <Link to="/auth/forgot-password">{t("Forgot Password?")}</Link>
