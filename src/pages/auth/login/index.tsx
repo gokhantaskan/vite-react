@@ -10,32 +10,33 @@ import Button from "@/components/Button/Button";
 import InputField from "@/components/InputField/InputField";
 import { handleFormikSubmission } from "@/helpers/forms";
 import AuthLayout from "@/layouts/AuthLayout";
-import { awaiter, focusOnFirstInvalidInput } from "@/utils";
+import { useAuthStore } from "@/store/authStore";
+import { awaiter } from "@/utils";
 
 function LoginPage() {
   const navigate = useNavigate();
   const [t] = useTranslation("common");
+  const { auth, setAuthUser, setLoading } = useAuthStore();
   const [error, setError] = useState<string | null>(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const formRef = useRef<HTMLFormElement | null>(null);
 
   async function handleLogin({ email, password }: Omit<User, "fullName">) {
-    setIsSubmitting(true);
+    setLoading(true);
     setError(null);
 
     await awaiter(1500);
     await signIn({ email, password })
-      .then(() => {
+      .then(user => {
+        setAuthUser(user);
         navigate("/", {
           replace: true,
         });
       })
       .catch(err => {
-        console.error(err);
         setError(err.message);
       })
       .finally(() => {
-        setIsSubmitting(false);
+        setLoading(false);
       });
   }
 
@@ -93,7 +94,7 @@ function LoginPage() {
               size="large"
               type="submit"
               className="h-[56px] text-base"
-              loading={isSubmitting}
+              loading={auth.loading}
             >
               {t("login")}
             </Button>

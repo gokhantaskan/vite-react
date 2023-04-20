@@ -27,7 +27,7 @@ module.exports = {
   ],
   rules: {
     "prettier/prettier": "error",
-    quotes: ["error", "double"],
+    quotes: ["error", "double", { avoidEscape: true }],
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "no-useless-return": "off",

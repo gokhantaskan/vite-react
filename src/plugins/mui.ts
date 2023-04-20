@@ -24,12 +24,12 @@ const shadowValues = [
 
 const grayAlphaLight = (alpha?: number) =>
   chroma(colors.gray[200])
-    .alpha(alpha || 0.675)
+    .alpha(alpha || 0.75)
     .css();
 
 const grayAlphaDark = (alpha?: number) =>
   chroma(colors.gray[600])
-    .alpha(alpha || 0.675)
+    .alpha(alpha || 0.75)
     .css();
 
 const defaultOptions: Partial<ThemeOptions> = {

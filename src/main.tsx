@@ -9,6 +9,7 @@ import { HelmetProvider } from "react-helmet-async";
 
 import packageJson from "../package.json";
 import { I18nCustomProvider } from "./plugins/i18n-next";
+import { ToastifyContainer } from "./plugins/toastify";
 import Router from "./router";
 
 const DebugAtoms = () => {
@@ -34,6 +35,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         <I18nCustomProvider>
           <HelmetProvider>
             <Router />
+            <ToastifyContainer />
           </HelmetProvider>
         </I18nCustomProvider>
       </AtomDevtools>

@@ -7,7 +7,11 @@ export interface User {
 const getUsers = (): User[] =>
   JSON.parse(sessionStorage.getItem("users") || "[]");
 
-export async function signUp({ email, password, fullName }: User) {
+export async function signUp({
+  email,
+  password,
+  fullName,
+}: User): Promise<User> {
   return new Promise((resolve, reject) => {
     const users = getUsers();
     const user = { email, password, fullName };
@@ -25,7 +29,7 @@ export async function signUp({ email, password, fullName }: User) {
 export async function signIn({
   email,
   password,
-}: Pick<User, "email" | "password">) {
+}: Pick<User, "email" | "password">): Promise<User> {
   return new Promise((resolve, reject) => {
     const users = getUsers();
     const user = users.find((u: User) => u.email === email);

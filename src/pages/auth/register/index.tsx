@@ -11,7 +11,7 @@ import CheckboxField from "@/components/CheckboxField/CheckboxField";
 import InputField from "@/components/InputField/InputField";
 import { handleFormikSubmission } from "@/helpers/forms";
 import AuthLayout from "@/layouts/AuthLayout";
-import { awaiter, focusOnFirstInvalidInput } from "@/utils";
+import { awaiter } from "@/utils";
 
 function RegisterPage() {
   const navigate = useNavigate();

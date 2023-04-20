@@ -8,12 +8,16 @@ import { useEffectOnce } from "react-use";
 
 import { darkTheme, lightTheme } from "./plugins/mui";
 import { useAppStore } from "./store/appStore";
+import { useAuthStore } from "./store/authStore";
 
 function Root() {
   const { theme, language, setLanguage, setTheme } = useAppStore();
+  const { init: initAuth } = useAuthStore();
   const { i18n } = useTranslation();
 
   useEffectOnce(() => {
+    initAuth();
+
     if (navigator?.language && !localStorage.getItem("language")) {
       const navigatorLanguage = navigator.language;
       setLanguage(navigatorLanguage.split("-")[0].toLowerCase());
@@ -46,6 +50,7 @@ function Root() {
           content="Vite-React is a scaffold project for quickly setting up a React application with Vite, providing an integrated solution for using Tailwind CSS, Material-UI theme, twin.macro, and other essential libraries."
         />
       </Helmet>
+
       <StyledEngineProvider injectFirst>
         <ThemeProvider theme={theme === "dark" ? darkTheme : lightTheme}>
           <CssBaseline />

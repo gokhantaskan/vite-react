@@ -2,6 +2,7 @@ import Button from "@mui/material/Button";
 import { Fragment, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import Dialog from "@/components/Dialog/Dialog";
 import { ThemeSwitch } from "@/components/ThemeSwitch/ThemeSwitch";
@@ -51,9 +52,17 @@ function DashboardPage() {
               </p>
             ))}
         </div>
-        <Button onClick={() => setDialogOpen(true)}>Dialog</Button>
-        <Link to="/somewhere">Wrong Route Link</Link>
-        <ThemeSwitch />
+        <div className="space-x-2">
+          <Button onClick={() => setDialogOpen(true)}>Dialog</Button>
+          <Button
+            variant="outlined"
+            onClick={() => toast(new Date().getTime())}
+          >
+            Toast
+          </Button>
+          <Link to="/somewhere">Wrong Route Link</Link>
+          <ThemeSwitch />
+        </div>
       </div>
 
       <Dialog
