@@ -9,6 +9,7 @@ import { signUp, User } from "@/api/services/auth";
 import Button from "@/components/Button/Button";
 import CheckboxField from "@/components/CheckboxField/CheckboxField";
 import InputField from "@/components/InputField/InputField";
+import { handleFormikSubmission } from "@/helpers/forms";
 import AuthLayout from "@/layouts/AuthLayout";
 import { awaiter, focusOnFirstInvalidInput } from "@/utils";
 
@@ -72,76 +73,71 @@ function RegisterPage() {
         })}
         onSubmit={() => {}}
       >
-        {({ validateForm, setTouched, values }) => (
-          <form
-            className="grid w-full grid-cols-1 gap-4"
-            noValidate
-            ref={formRef}
-            onSubmit={async e => {
-              e.preventDefault();
-              const errors = await validateForm();
+        {formik => {
+          const { values } = formik;
 
-              if (Object.keys(errors).length > 0) {
-                setTouched(
-                  Object.fromEntries(
-                    Object.keys(errors).map(key => [key, true])
-                  )
-                );
-                setTimeout(() => focusOnFirstInvalidInput(formRef.current), 0);
-                return;
-              }
+          return (
+            <form
+              className="grid w-full grid-cols-1 gap-4"
+              noValidate
+              ref={formRef}
+              onSubmit={async e => {
+                e.preventDefault();
 
-              await handleRegister({
-                email: values.email,
-                password: values.password,
-                fullName: values.fullName,
-              });
-            }}
-          >
-            <InputField
-              name="fullName"
-              label={t("fullName")}
-              required
-            />
-            <InputField
-              name="email"
-              label={t("email")}
-              type="email"
-              required
-            />
-            <InputField
-              name="password"
-              label={t("password")}
-              type="password"
-              required
-            />
-            <InputField
-              name="passwordConfirmation"
-              label={`${t("password")} (${t("repeat")})`}
-              type="password"
-              toggleable={false}
-              required
-            />
-            <CheckboxField
-              name="termsAndConditions"
-              label={
-                <Fragment>
-                  I agree to the <a href="javascript:void(0)">terms</a> and{" "}
-                  <a href="javascript:void(0)">conditions</a>
-                </Fragment>
-              }
-              required
-            />
-            <Button
-              size="large"
-              type="submit"
-              className="h-[56px] text-base"
-              loading={isSubmitting}
+                handleFormikSubmission(formRef.current, formik, async () => {
+                  await handleRegister({
+                    email: values.email,
+                    password: values.password,
+                    fullName: values.fullName,
+                  });
+                });
+              }}
             >
-              {t("register")}
-            </Button>
-          </form>
-        )}
+              <InputField
+                name="fullName"
+                label={t("fullName")}
+                required
+              />
+              <InputField
+                name="email"
+                label={t("email")}
+                type="email"
+                required
+              />
+              <InputField
+                name="password"
+                label={t("password")}
+                type="password"
+                required
+              />
+              <InputField
+                name="passwordConfirmation"
+                label={`${t("password")} (${t("repeat")})`}
+                type="password"
+                toggleable={false}
+                required
+              />
+              <CheckboxField
+                name="termsAndConditions"
+                label={
+                  <Fragment>
+                    I agree to the <a href="javascript:void(0)">terms</a> and{" "}
+                    <a href="javascript:void(0)">conditions</a>
+                  </Fragment>
+                }
+                required
+              />
+              <Button
+                size="large"
+                type="submit"
+                className="h-[56px] text-base"
+                loading={isSubmitting}
+              >
+                {t("register")}
+              </Button>
+            </form>
+          );
+        }}
       </Formik>
 
       <div className="text-center">

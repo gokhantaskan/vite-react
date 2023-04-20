@@ -8,6 +8,7 @@ import * as Yup from "yup";
 import { signIn, User } from "@/api/services/auth";
 import Button from "@/components/Button/Button";
 import InputField from "@/components/InputField/InputField";
+import { handleFormikSubmission } from "@/helpers/forms";
 import AuthLayout from "@/layouts/AuthLayout";
 import { awaiter, focusOnFirstInvalidInput } from "@/utils";
 
@@ -63,28 +64,16 @@ function LoginPage() {
         })}
         onSubmit={() => {}}
       >
-        {({ validateForm, setTouched, values }) => (
+        {formik => (
           <form
             className="grid w-full grid-cols-1 gap-4"
             noValidate
             ref={formRef}
             onSubmit={async e => {
               e.preventDefault();
-              const errors = await validateForm();
 
-              if (Object.keys(errors).length > 0) {
-                setTouched(
-                  Object.fromEntries(
-                    Object.keys(errors).map(key => [key, true])
-                  )
-                );
-                setTimeout(() => focusOnFirstInvalidInput(formRef.current), 0);
-                return;
-              }
-
-              await handleLogin({
-                email: values.email,
-                password: values.password,
+              handleFormikSubmission(formRef.current, formik, async () => {
+                await handleLogin(formik.values);
               });
             }}
           >
