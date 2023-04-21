@@ -29,7 +29,7 @@ export async function signUp({
 export async function signIn({
   email,
   password,
-}: Pick<User, "email" | "password">): Promise<User> {
+}: Pick<User, "email" | "password">): Promise<Omit<User, "password">> {
   return new Promise((resolve, reject) => {
     const users = getUsers();
     const user = users.find((u: User) => u.email === email);
@@ -38,7 +38,7 @@ export async function signIn({
       const { fullName, email } = user;
 
       sessionStorage.setItem("user", JSON.stringify({ fullName, email }));
-      resolve(user);
+      resolve({ fullName, email });
     } else {
       reject(new Error("Email or password is incorrect!"));
     }

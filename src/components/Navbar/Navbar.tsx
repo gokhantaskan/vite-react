@@ -1,4 +1,3 @@
-import styled from "@emotion/styled";
 import MenuIcon from "@mui/icons-material/Menu";
 import AppBar from "@mui/material/AppBar";
 import Button from "@mui/material/Button";
@@ -17,6 +16,9 @@ import tw from "twin.macro";
 
 import { ReactComponent as Logo } from "@/assets/img/logo.svg";
 import { routes } from "@/router";
+import { useAuthStore } from "@/store/authStore";
+
+import AccountMenu from "../AccountMenu/AccountMenu";
 
 const appRoutes = routes[0].children.find(
   route => route.name === "app"
@@ -24,6 +26,7 @@ const appRoutes = routes[0].children.find(
 
 export function Navbar({ className }: { className?: string }) {
   const { t } = useTranslation("common");
+  const { auth } = useAuthStore();
   const navigate = useNavigate();
   const drawerWidth = 240;
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -62,19 +65,27 @@ export function Navbar({ className }: { className?: string }) {
           </Link>
 
           <div className="ml-auto space-x-2">
-            <Button
-              variant="outlined"
-              color="neutral"
-              onClick={() => navigate("/auth/login")}
-            >
-              {t("login")}
-            </Button>
-            <Button
-              color="primary"
-              onClick={() => navigate("/auth/signup")}
-            >
-              {t("register")}
-            </Button>
+            {auth.isAuthenticated ? (
+              <Fragment>
+                <AccountMenu />
+              </Fragment>
+            ) : (
+              <Fragment>
+                <Button
+                  variant="outlined"
+                  color="neutral"
+                  onClick={() => navigate("/auth/login")}
+                >
+                  {t("login")}
+                </Button>
+                <Button
+                  color="primary"
+                  onClick={() => navigate("/auth/signup")}
+                >
+                  {t("register")}
+                </Button>
+              </Fragment>
+            )}
           </div>
         </Toolbar>
       </AppBar>

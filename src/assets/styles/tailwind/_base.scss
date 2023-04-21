@@ -26,7 +26,10 @@ body {
 }
 
 a:not([class]) {
-  @apply u-text-primary no-underline hover:underline;
+  &,
+  &:visited {
+    @apply u-text-primary no-underline hover:underline;
+  }
 }
 
 @media (min-width: theme("screens.md")) {

@@ -2,12 +2,14 @@ import { atom, useAtom, useSetAtom } from "jotai";
 
 import { User } from "@/api/services/auth";
 
-const getSessionUser = () => {
+export type StoredUser = Omit<User, "password"> | null;
+
+const getSessionUser = (): StoredUser => {
   const user = sessionStorage.getItem("user");
   return user ? JSON.parse(user) : null;
 };
 
-const userAtom = atom<User | null>(null);
+const userAtom = atom<StoredUser>(null);
 const loadingAtom = atom(true);
 const isAuthenticatedAtom = atom(get => get(userAtom) !== null);
 
@@ -31,7 +33,6 @@ export function useAuthStore() {
     setLoading,
     init: () => {
       const user = getSessionUser();
-
       setAuthUser(user);
       setLoading(false);
     },

@@ -50,6 +50,15 @@ const defaultOptions: Partial<ThemeOptions> = {
         variant: "filled",
       },
     },
+    MuiAvatar: {
+      styleOverrides: {
+        root: {
+          backgroundColor: colors.gray[200],
+          color: colors.gray[900],
+          fontWeight: 500,
+        },
+      },
+    },
     MuiBackdrop: {
       styleOverrides: {
         root: ({ theme }) => ({
@@ -60,6 +69,18 @@ const defaultOptions: Partial<ThemeOptions> = {
           //   willChange: "backdrop-filter",
           // },
         }),
+      },
+    },
+    MuiMenu: {
+      defaultProps: {
+        slotProps: {
+          backdrop: {
+            sx: {
+              backgroundColor: "transparent",
+            },
+          },
+        },
+        elevation: 3,
       },
     },
     MuiDrawer: {
@@ -81,11 +102,6 @@ const defaultOptions: Partial<ThemeOptions> = {
         paper: {
           backgroundImage: "none",
         },
-      },
-    },
-    MuiMenu: {
-      defaultProps: {
-        elevation: 2,
       },
     },
     MuiListItemButton: {
