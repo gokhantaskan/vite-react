@@ -1,0 +1,9 @@
+{
+  "arrowParens": "avoid",
+  "semi": true,
+  "singleQuote": false,
+  "jsxSingleQuote": false,
+  "bracketSameLine": false,
+  "singleAttributePerLine": true,
+  "quoteProps": "as-needed"
+}

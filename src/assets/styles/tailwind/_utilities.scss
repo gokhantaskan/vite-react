@@ -1,0 +1,23 @@
+@layer utilities {
+  .u-flex-center-screen {
+    @apply flex items-center justify-center min-h-screen;
+  }
+
+  .u-text {
+    &-primary {
+      @apply text-primary-500 dark:text-primary-400;
+    }
+
+    &-error {
+      @apply text-danger-500 dark:text-danger-400;
+    }
+
+    &-muted {
+      @apply text-gray-600 dark:text-gray-300;
+    }
+  }
+
+  .u-all-unset {
+    all: unset;
+  }
+}

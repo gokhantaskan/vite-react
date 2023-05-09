@@ -1,0 +1,41 @@
+*,
+*::before,
+*::after {
+  border-width: 0;
+  border-style: solid;
+  @apply border-gray-300 dark:border-gray-600;
+}
+
+html {
+  font-size: 16px;
+
+  &.dark {
+    color-scheme: dark;
+  }
+}
+
+body {
+  font-size: 0.875rem !important;
+  @apply bg-white text-gray-900;
+  @apply dark:bg-gray-900 dark:text-white;
+  @apply m-0 p-0 font-sans;
+}
+
+:is(h1, h2, h3, h4, h5, h6) {
+  @apply font-heading font-bold;
+}
+
+a.focus-visible,
+a[class=""],
+a:not([class]) {
+  &,
+  &:visited {
+    @apply u-text-primary no-underline hover:underline;
+  }
+}
+
+@media (min-width: theme("screens.md")) {
+  body {
+    font-size: 1rem !important;
+  }
+}
