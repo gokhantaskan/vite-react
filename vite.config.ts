@@ -23,15 +23,6 @@ export default defineConfig(({ mode }) => {
       // https://github.com/vitejs/vite/issues/8644#issuecomment-1159308803
       logOverride: { "this-is-undefined-in-esm": "silent" },
     },
-    build: {
-      rollupOptions: {
-        external: [
-          fileURLToPath(
-            new URL("./public/mockServiceWorker.js", import.meta.url)
-          ),
-        ],
-      },
-    },
     plugins: [
       react({
         babel: {
@@ -65,7 +56,7 @@ export default defineConfig(({ mode }) => {
         : undefined,
     ],
     server: {
-      port: 3030,
+      port: 8080,
       watch: {
         usePolling: true,
       },

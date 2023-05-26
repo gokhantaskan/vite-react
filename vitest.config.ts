@@ -19,7 +19,7 @@ export default mergeConfig(
         html: "./test-results/unit/html/index.html",
       },
       coverage: {
-        all: true,
+        all: false,
         include: [
           "src/components/**",
           "src/utils/**",
