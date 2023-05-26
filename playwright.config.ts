@@ -1,3 +1,5 @@
+import "dotenv/config";
+
 import { defineConfig, devices, PlaywrightTestConfig } from "@playwright/test";
 
 /**
@@ -34,7 +36,7 @@ const config: PlaywrightTestConfig = {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: "http://localhost:3030",
+    baseURL: "http://localhost:8080",
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",
     /* Only on CI systems run the tests headless */
@@ -79,8 +81,8 @@ const config: PlaywrightTestConfig = {
   ],
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: process.env.CI ? "npm run preview --port 3030" : "npm run dev",
-    port: 3030,
+    command: process.env.CI ? "vite preview --port 8080" : "vite dev",
+    port: 8080,
     reuseExistingServer: !process.env.CI,
   },
 };

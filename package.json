@@ -10,7 +10,7 @@
     }
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --open",
     "build": "run-p type-check build-only",
     "build:staging": "npm run type-check && npm run build-only -- --mode staging",
     "build-only": "vite build",
@@ -18,7 +18,7 @@
     "type-check": "tsc --noEmit",
     "lint": "eslint . --ext .js,.cjs,.mjs,.ts,.tsx --fix",
     "format": "prettier --write . -l -u --no-error-on-unmatched-pattern",
-    "lf": "npm run format && npm run lint",
+    "lf": "run-s lint format",
     "test:unit": "npm run vitest -- run",
     "test:unit:watch": "npm run vitest -- --ui",
     "test:e2e:dev": "env-cmd -f .env.development --no-override playwright test",
