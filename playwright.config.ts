@@ -50,7 +50,7 @@ const config: PlaywrightTestConfig = {
   projects: [
     {
       name: "Chrome",
-      use: { ...devices["Desktop Chrome"], channel: "chrome" },
+      use: { ...devices["Desktop Chrome"] },
     },
     {
       name: "Microsoft Edge",
