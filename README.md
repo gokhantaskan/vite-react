@@ -1,5 +1,7 @@
 # Vite-React
 
+[![CI](https://github.com/gokhantaskan/vite-react/actions/workflows/ci.yml/badge.svg)](https://github.com/gokhantaskan/vite-react/actions/workflows/ci.yml)
+
 Vite-React is a scaffold project for quickly setting up a React application with Vite, providing an integrated solution for using Tailwind CSS, Material-UI theme, twin.macro, and other essential libraries.
 
 https://astounding-toffee-68b49b.netlify.app/
@@ -7,10 +9,10 @@ https://astounding-toffee-68b49b.netlify.app/
 ## Features
 
 - Pre-configured with Vite for fast development and optimized builds
-- Integrated styling solution using Tailwind CSS, Material-UI theme, and twin.macro
+- Integrated styling solution using TailwindCSS, MUI, and twin.macro
 - Integrated multi-language solution using i18n-next
-- Centralized theme configuration for both Tailwind and Material-UI
-- Type checking with TypeScript throughout development and build processes
+- Centralized theme configuration
+- Type checking throughout development and build processes
 - Essential libraries included:
   - Formik for form management
   - Yup for validation
@@ -28,14 +30,10 @@ https://astounding-toffee-68b49b.netlify.app/
 ## Requirements
 
 - Node.js >=16.0.0
-- npm
 
 ## Known Issues
 
-- The initial takes a long time due to the packages and the configuration. Try not to use `--force` flag until it's not necessary.
-  - For the first run, wait until the server starts.
-  - Build takes around 17 seconds on Netlify.
-  - Don't try to run the tests before the first run, or you may get an error from `Playwright` (timeout).
+- The initial takes a bit long time due to the packages and the configuration. Try not to use `--force` flag until it's not necessary.
 - `Playwright` dependencies should be installed if you encounter a problem. Follow the command line for more details.
 - If you get an issue about `husky`, use the code (in project root) below to give it an access to the file system.
 
@@ -63,7 +61,7 @@ $ chmod ug+x .husky/*
 
 `format`: Format the code using Prettier.
 
-`lf`: Format then Lint the code.
+`lf`: Format and Lint in parallel.
 
 `test:unit`: Run unit tests with Vitest and generate coverage report.
 
@@ -73,7 +71,7 @@ $ chmod ug+x .husky/*
 
 `test:e2e:watch`: Run `test:e2e:dev` with Vitest UI in the **development** environment.
 
-`test:e2e:sta`: Run end-to-end tests with Playwright in the **staging** environment.
+`test:e2e:ci`: Run end-to-end tests with Playwright in the **staging** environment with CI.
 
 `prepare`: Install Husky for Git hooks.
 
@@ -89,20 +87,7 @@ npx playwright install
 npm run build
 # or
 npm run build:staging
-
-# Runs the end-to-end tests
-npm run test:e2e
-# Runs the tests only on Chromium
-npm run test:e2e -- --project=chromium
-# Runs the tests of a specific file
-npm run test:e2e -- example.spec.ts
-# Runs the tests in debug mode
-npm run test:e2e -- --debug
-# Runs the tests in headed mode
-npm run test:e2e -- --headed
 ```
-
-There are several [flags in Playwright](https://playwright.dev/docs/test-cli).
 
 `env-cmd` is used for environment variables depending on the stages.
 
