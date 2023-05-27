@@ -53,7 +53,10 @@ jobs:
         run: npm run build
       # Install playwright
       - name: Install Playwright
-        run: npx playwright install --with-deps chrome msedge
+        run: npx playwright install --with-deps
+      # Install msedge
+      - name: Install Playwright
+        run: npx playwright install msedge
       # Run e2e tests
       - name: Run e2e tests
         uses: coactions/setup-xvfb@v1
