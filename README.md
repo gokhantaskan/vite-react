@@ -45,7 +45,9 @@ $ chmod ug+x .husky/*
 
 ### Scripts
 
-`dev`: Start the development server. You can use `npm run dev -- --force` for hard refresh.
+`dev`: Start the development server.
+
+`dev:force`: Clear cache and start the development server.
 
 `build`: Run type checking and build the project for production.
 
@@ -65,23 +67,24 @@ $ chmod ug+x .husky/*
 
 `test:unit`: Run unit tests with Vitest and generate coverage report.
 
-`test:unit:watch`: Run `test:unit` with Vitest UI in **watch** mode.
+`test:unit:watch`: Run `test:unit` with Vitest **UI** in **watch** mode.
 
-`test:e2e:dev`: Run end-to-end tests with Playwright in the **development** environment.
+`test:e2e`: Run end-to-end tests with Playwright in the **development** environment.
 
-`test:e2e:watch`: Run `test:e2e:dev` with Vitest UI in the **development** environment.
+`test:e2e:watch`: Run `test:e2e` with Playwright **UI** in the **development** environment.
 
 `test:e2e:ci`: Run end-to-end tests with Playwright in the **staging** environment with CI.
 
 `prepare`: Install Husky for Git hooks.
 
-`clear:ignored`: Remove ignored files and folders, such as test results, reports, and build artifacts.
+`clear`: Remove ignored files and folders, such as test results, reports, and build artifacts.
 
 ### About E2E Tests with [Playwright](https://playwright.dev)
 
 ```sh
 # Install browsers for the first run
-npx playwright install
+npx playwright install --with-deps
+npx playwright install msedge
 
 # When testing on CI, must build the project first
 npm run build
