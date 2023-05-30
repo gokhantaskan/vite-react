@@ -11,7 +11,7 @@
   },
   "scripts": {
     "dev": "vite --open",
-    "dev:force": "run-s clear:ignored \"dev -- --force\"",
+    "dev:force": "run-s clear \"dev -- --force\"",
     "build-only": "vite build",
     "build": "run-p type-check build-only",
     "build:staging": "run-p type-check && \"build-only -- --mode staging\"",
@@ -22,9 +22,10 @@
     "lf": "run-p lint format",
     "test:unit": "run-s \"vitest -- run\"",
     "test:unit:watch": "run-s \"vitest -- --ui\"",
-    "test:e2e:dev": "env-cmd -f .env.development --no-override playwright test",
+    "test:e2e": "env-cmd -f .env.development --no-override playwright test",
+    "test:e2e:watch": "env-cmd -f .env.development --no-override playwright test --ui",
     "test:e2e:ci": "env-cmd -f .env.staging --no-override playwright test",
-    "clear:ignored": "rimraf test-results playwright-report dist",
+    "clear": "rimraf test-results playwright-report dist",
     "prepare": "husky install",
     "vitest": "vitest --coverage"
   },
