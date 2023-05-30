@@ -3,15 +3,15 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 import { ReactComponent as Logo } from "@/assets/img/icon.svg";
-import LocaleChanger from "@/components/LocaleChanger/LocaleChanger";
+import LocaleChanger from "@/components/shared/LocaleChanger/LocaleChanger";
 
-interface IAuthLayoutProps {
+interface AuthLayoutProps {
   title: string;
   description: string;
   children: React.ReactNode;
 }
 
-function AuthLayout({ title, description, children }: IAuthLayoutProps) {
+function AuthLayout({ title, description, children }: AuthLayoutProps) {
   return (
     <Fragment>
       <Helmet>

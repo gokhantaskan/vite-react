@@ -1,10 +1,10 @@
-import Button from "@mui/material/Button/Button";
 import { Formik } from "formik";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
 
-import InputField from "@/components/InputField/InputField";
+import Button from "@/components/shared/Button/Button";
+import InputField from "@/components/shared/InputField/InputField";
 import { handleFormikSubmission } from "@/helpers/forms";
 import AuthLayout from "@/layouts/AuthLayout";
 

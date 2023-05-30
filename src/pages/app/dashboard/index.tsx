@@ -1,11 +1,11 @@
-import Button from "@mui/material/Button";
 import { Fragment, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
-import Dialog from "@/components/Dialog/Dialog";
-import { ThemeSwitch } from "@/components/ThemeSwitch/ThemeSwitch";
+import Button from "@/components/shared/Button/Button";
+import Dialog from "@/components/shared/Dialog/Dialog";
+import { ThemeSwitch } from "@/components/shared/ThemeSwitch/ThemeSwitch";
 
 function DashboardPage() {
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -35,20 +35,7 @@ function DashboardPage() {
                 dolores quam libero perspiciatis voluptatibus! Quaerat assumenda
                 velit tenetur nesciunt provident ipsam distinctio consequatur
                 aliquid harum dignissimos eligendi cum odit ipsa, vel corrupti
-                recusandae ut commodi eos non? Fugiat qui numquam ipsa
-                dignissimos aspernatur dolorem, quibusdam architecto tempore
-                facere laudantium eaque consequatur eum mollitia exercitationem
-                amet ea quia ullam aliquid non esse ipsum veritatis aliquam
-                atque? Incidunt perspiciatis voluptates est dicta, quis et, eos
-                quos perferendis similique a facere impedit ab fuga vitae
-                aspernatur labore aliquam corrupti. Animi quisquam voluptates
-                soluta adipisci quidem magnam corrupti, consequatur cupiditate
-                qui maxime esse culpa fuga nisi impedit asperiores pariatur,
-                facilis aliquid inventore maiores fugit neque! Blanditiis
-                consequatur reiciendis eius commodi iure iusto corporis ab non
-                qui! Repudiandae corrupti a, ducimus doloribus, pariatur tenetur
-                sed quisquam unde mollitia praesentium reprehenderit explicabo
-                et suscipit eius.
+                recusandae ut commodi eos non?
               </p>
             ))}
         </div>

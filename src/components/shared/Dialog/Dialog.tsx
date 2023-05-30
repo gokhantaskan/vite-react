@@ -1,9 +1,7 @@
 import CloseIcon from "@mui/icons-material/Close";
-import MuiDialog, { DialogProps } from "@mui/material/Dialog/Dialog";
-import IconButton from "@mui/material/IconButton";
+import { Dialog as MuiDialog, DialogProps, IconButton } from "@mui/material";
 import clsx from "clsx";
-import { ReactNode } from "react";
-import { v4 as uuidv4 } from "uuid";
+import { ReactNode, useId } from "react";
 
 function Dialog({
   children,
@@ -19,7 +17,7 @@ function Dialog({
   children: ReactNode;
 } & DialogProps) {
   const Title = titleTag as keyof JSX.IntrinsicElements;
-  const titleId = uuidv4();
+  const titleId = useId();
 
   return (
     <MuiDialog

@@ -1,5 +1,5 @@
-import { CssBaseline, ThemeProvider } from "@mui/material";
-import { StyledEngineProvider } from "@mui/material/styles";
+import { CssBaseline } from "@mui/material";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
 import { Fragment, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";

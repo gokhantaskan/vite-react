@@ -41,6 +41,15 @@ export default defineConfig(({ mode }) => {
               { pragma: "__cssprop" },
               "twin.macro",
             ],
+            [
+              "babel-plugin-import",
+              {
+                libraryName: "@mui/material",
+                libraryDirectory: "",
+                camel2DashComponentName: false,
+              },
+              "core",
+            ],
           ],
         },
       }),
@@ -56,7 +65,7 @@ export default defineConfig(({ mode }) => {
         : undefined,
     ],
     server: {
-      port: 8080,
+      port: 9090,
       watch: {
         usePolling: true,
       },

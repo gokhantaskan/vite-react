@@ -1,4 +1,4 @@
-import Switch from "@mui/material/Switch";
+import { Switch } from "@mui/material";
 import { Fragment } from "react";
 
 import { useAppStore } from "@/store/appStore";

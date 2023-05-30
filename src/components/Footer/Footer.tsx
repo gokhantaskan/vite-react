@@ -1,7 +1,7 @@
 import clsx from "clsx";
 
 import { ReactComponent as Icon } from "@/assets/img/icon.svg";
-import LocaleChanger from "@/components/LocaleChanger/LocaleChanger";
+import LocaleChanger from "@/components/shared/LocaleChanger/LocaleChanger";
 
 export function Footer({ className }: { className?: string }) {
   return (

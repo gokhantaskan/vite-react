@@ -1,4 +1,4 @@
-import Spinner from "@/components/Spinner/Spinner";
+import Spinner from "../shared/Spinner/Spinner";
 
 export function PageLoader() {
   return (

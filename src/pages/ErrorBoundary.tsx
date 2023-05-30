@@ -1,5 +1,5 @@
 import { ReactComponent as Icon } from "@img/icon.svg";
-import Button from "@mui/material/Button/Button";
+import { Button } from "@mui/material";
 import { Fragment } from "react";
 import { Helmet } from "react-helmet-async";
 import { isRouteErrorResponse, Link, useRouteError } from "react-router-dom";

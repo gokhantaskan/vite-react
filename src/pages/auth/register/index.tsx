@@ -1,4 +1,4 @@
-import Alert from "@mui/material/Alert/Alert";
+import { Alert } from "@mui/material";
 import { Formik } from "formik";
 import { Fragment, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -6,9 +6,9 @@ import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
 import { signUp, User } from "@/api/services/auth";
-import Button from "@/components/Button/Button";
-import CheckboxField from "@/components/CheckboxField/CheckboxField";
-import InputField from "@/components/InputField/InputField";
+import Button from "@/components/shared/Button/Button";
+import CheckboxField from "@/components/shared/CheckboxField/CheckboxField";
+import InputField from "@/components/shared/InputField/InputField";
 import { handleFormikSubmission } from "@/helpers/forms";
 import AuthLayout from "@/layouts/AuthLayout";
 import { awaiter } from "@/utils/common";

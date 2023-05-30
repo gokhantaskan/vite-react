@@ -1,7 +1,9 @@
-import MuiButton, { ButtonProps as MuiButtonProps } from "@mui/material/Button";
-import CircularProgress, {
+import {
+  Button as MuiButton,
+  ButtonProps as MuiButtonProps,
+  CircularProgress,
   CircularProgressProps,
-} from "@mui/material/CircularProgress";
+} from "@mui/material";
 import { useRef, useState } from "react";
 import { useEffectOnce } from "react-use";
 

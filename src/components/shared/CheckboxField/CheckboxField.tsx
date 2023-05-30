@@ -1,7 +1,10 @@
-import Checkbox, { CheckboxProps } from "@mui/material/Checkbox/Checkbox";
-import FormControl from "@mui/material/FormControl/FormControl";
-import FormControlLabel from "@mui/material/FormControlLabel/FormControlLabel";
-import FormHelperText from "@mui/material/FormHelperText/FormHelperText";
+import {
+  Checkbox,
+  CheckboxProps,
+  FormControl,
+  FormControlLabel,
+  FormHelperText,
+} from "@mui/material";
 import clsx from "clsx";
 import { useField } from "formik";
 import { ReactNode, useId } from "react";
