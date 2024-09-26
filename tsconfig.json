@@ -18,12 +18,13 @@
     "jsxImportSource": "@emotion/react",
     "baseUrl": ".",
     "paths": {
+      "~/*": ["./*"],
       "@/*": ["./src/*"],
       "@img/*": ["./src/assets/img"]
     }
   },
   "types": ["vitest/globals", "@testing-library/jest-dom"],
-  "include": ["src", "types", "config"],
+  "include": ["src", "types", "config", "./vitest.setup.ts"],
   "references": [
     {
       "path": "./tsconfig.node.json"

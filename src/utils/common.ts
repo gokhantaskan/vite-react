@@ -3,6 +3,7 @@ export function awaiter(milliseconds: number = 10) {
   return new Promise(resolve => setTimeout(resolve, milliseconds));
 }
 
+// TODO: improve
 export function focusOnFirstInvalidInput(element: HTMLElement | null) {
   if (!element) return;
 
