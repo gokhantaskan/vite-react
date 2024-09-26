@@ -1,8 +1,9 @@
+import { Config } from "tailwindcss";
 import plugin from "tailwindcss/plugin";
 
 import { borderRadius, boxShadow, colors, screens } from "./config/defaults";
 
-export default {
+export default <Config>{
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
   corePlugins: {

@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { Form, Formik } from "formik";
 import { describe, expect, test } from "vitest";
-import * as Yup from "yup";
+import * as yup from "yup";
 
 import CheckboxField from "./CheckboxField";
 
@@ -10,8 +10,8 @@ describe("CheckboxField", () => {
     terms: false,
   };
 
-  const validationSchema = Yup.object({
-    terms: Yup.boolean().oneOf([true], "Accepting terms is required"),
+  const validationSchema = yup.object({
+    terms: yup.boolean().oneOf([true], "Accepting terms is required"),
   });
 
   function renderForm() {
