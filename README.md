@@ -29,7 +29,7 @@ https://astounding-toffee-68b49b.netlify.app/
 
 ## Requirements
 
-- Node.js >=16.0.0
+- Node.js >=20
 
 ## Known Issues
 
