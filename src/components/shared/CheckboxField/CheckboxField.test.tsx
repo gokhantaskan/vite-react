@@ -1,4 +1,5 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { Form, Formik } from "formik";
 import { describe, expect, test } from "vitest";
 import * as yup from "yup";
@@ -33,10 +34,6 @@ describe("CheckboxField", () => {
     );
   }
 
-  function getFakebox() {
-    return document.querySelector(".PrivateSwitchBase-root") as HTMLSpanElement;
-  }
-
   test("renders the checkbox with the correct label", () => {
     renderForm();
     expect(screen.getByText("Accept Terms")).toBeInTheDocument();
@@ -47,21 +44,22 @@ describe("CheckboxField", () => {
     expect(screen.getByText("Custom helper text")).toBeInTheDocument();
   });
 
-  test("updates the value of the checkbox when clicked", () => {
+  test("updates the value of the checkbox when clicked", async () => {
+    const user = userEvent.setup();
     renderForm();
     const checkbox = screen.getByRole("checkbox");
-    const fakebox = getFakebox();
     expect(checkbox).not.toBeChecked();
-    fireEvent.click(fakebox);
-    expect(checkbox).toBeChecked();
+    await user.click(checkbox);
+    await waitFor(() => {
+      expect(checkbox).toBeChecked();
+    });
   });
 
   test("displays error message when the field has an error and is touched", async () => {
+    const user = userEvent.setup();
     renderForm();
     const button = screen.getByRole("button");
-    fireEvent.click(button);
-    expect(
-      await screen.findByText("Accepting terms is required")
-    ).toBeInTheDocument();
+    await user.click(button);
+    expect(await screen.findByText("Accepting terms is required")).toBeInTheDocument();
   });
 });

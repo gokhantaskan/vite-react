@@ -10,5 +10,7 @@ export function focusOnFirstInvalidInput(element: HTMLElement | null) {
   const focusableElements = element.querySelectorAll(".in-error-state input");
   const firstElement = focusableElements[0] as HTMLInputElement;
 
-  firstElement && firstElement.focus();
+  if (firstElement) {
+    firstElement.focus();
+  }
 }

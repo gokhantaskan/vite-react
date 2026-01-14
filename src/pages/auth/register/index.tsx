@@ -82,17 +82,13 @@ function RegisterPage() {
               onSubmit={async e => {
                 e.preventDefault();
 
-                handleFormikSubmission(
-                  e.currentTarget,
-                  { validateForm, setTouched },
-                  async () => {
-                    await handleRegister({
-                      email: values.email,
-                      password: values.password,
-                      fullName: values.fullName,
-                    });
-                  }
-                );
+                handleFormikSubmission(e.currentTarget, { validateForm, setTouched }, async () => {
+                  await handleRegister({
+                    email: values.email,
+                    password: values.password,
+                    fullName: values.fullName,
+                  });
+                });
               }}
             >
               <InputField
@@ -123,8 +119,7 @@ function RegisterPage() {
                 name="termsAndConditions"
                 label={
                   <Fragment>
-                    I agree to the <a href="#">terms</a> and{" "}
-                    <a href="#">conditions</a>
+                    I agree to the <a href="#">terms</a> and <a href="#">conditions</a>
                   </Fragment>
                 }
                 required

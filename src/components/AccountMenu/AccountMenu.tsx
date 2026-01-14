@@ -1,7 +1,7 @@
-import Avatar from "@mui/material/Avatar/Avatar";
-import IconButton from "@mui/material/IconButton/IconButton";
-import Menu from "@mui/material/Menu/Menu";
-import MenuItem from "@mui/material/MenuItem/MenuItem";
+import Avatar from "@mui/material/Avatar";
+import IconButton from "@mui/material/IconButton";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 import { Fragment, MouseEvent, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -30,7 +30,7 @@ function AccountMenu() {
     setAnchorEl(event.currentTarget);
   }
 
-  function handleClose(cb?: Function) {
+  function handleClose(cb?: () => void) {
     setAnchorEl(null);
     cb?.();
   }

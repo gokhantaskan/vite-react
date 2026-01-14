@@ -18,8 +18,6 @@ i18next.init({
   },
 });
 
-export const I18nCustomProvider: FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
+export const I18nCustomProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
   return <I18nextProvider i18n={i18next}>{children}</I18nextProvider>;
 };

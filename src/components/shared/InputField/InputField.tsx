@@ -1,10 +1,5 @@
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import {
-  IconButton,
-  InputAdornment,
-  TextField,
-  TextFieldProps,
-} from "@mui/material";
+import { IconButton, InputAdornment, TextField, TextFieldProps } from "@mui/material";
 import clsx from "clsx";
 import { useField } from "formik";
 import { FC, useMemo, useState } from "react";

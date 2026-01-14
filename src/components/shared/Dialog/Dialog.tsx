@@ -1,7 +1,7 @@
 import CloseIcon from "@mui/icons-material/Close";
 import { Dialog as MuiDialog, DialogProps, IconButton } from "@mui/material";
 import clsx from "clsx";
-import { ReactNode, useId } from "react";
+import React, { ReactNode, useId } from "react";
 
 function Dialog({
   children,
@@ -12,11 +12,11 @@ function Dialog({
   ...props
 }: {
   title: ReactNode;
-  titleTag?: keyof JSX.IntrinsicElements;
+  titleTag?: keyof React.JSX.IntrinsicElements;
   actions?: ReactNode;
   children: ReactNode;
 } & DialogProps) {
-  const Title = titleTag as keyof JSX.IntrinsicElements;
+  const Title = titleTag as keyof React.JSX.IntrinsicElements;
   const titleId = useId();
 
   return (
@@ -26,12 +26,7 @@ function Dialog({
       aria-labelledby={titleId}
     >
       <div className="divide-y">
-        <div
-          className={clsx(
-            "p-4 relative",
-            "flex justify-between items-baseline gap-4"
-          )}
-        >
+        <div className={clsx("p-4 relative", "flex justify-between items-baseline gap-4")}>
           <Title
             id={titleId}
             className="m-0 leading-[32px] text-xl pr-[calc(32px+0.5rem)]"
@@ -41,7 +36,9 @@ function Dialog({
 
           <IconButton
             aria-label="close"
-            onClick={onClose as any}
+            onClick={event => {
+              onClose?.(event, "backdropClick");
+            }}
             color="error"
             sx={{
               position: "absolute",

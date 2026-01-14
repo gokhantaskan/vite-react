@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet-async";
 import { isRouteErrorResponse, Link, useRouteError } from "react-router-dom";
 
 function NotFound() {
-  const error = useRouteError() as any;
+  const error = useRouteError();
   const isRouteError = isRouteErrorResponse(error);
   console.error("Route Error: ", error);
 
@@ -24,8 +24,8 @@ function NotFound() {
             <h2 className="m-0">Page Not Found</h2>
           </div>
           <p className="max-w-md u-text-muted">
-            The page you are looking for might have been removed, had its name
-            changed, or is temporarily unavailable.
+            The page you are looking for might have been removed, had its name changed, or is
+            temporarily unavailable.
           </p>
           <div className="flex items-center w-full max-w-sm gap-4">
             <Button
