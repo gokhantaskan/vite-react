@@ -7,8 +7,8 @@ import ReactDOM from "react-dom/client";
 import { HelmetProvider } from "react-helmet-async";
 
 import packageJson from "../package.json";
-import { ToastContainer } from "./plugins/hot-toast";
-import { I18nCustomProvider } from "./plugins/i18n-next";
+import { I18nProvider } from "./providers/I18nProvider";
+import { ToastProvider } from "./providers/ToastProvider";
 import Root from "./Root";
 
 const DebugAtoms = () => {
@@ -26,12 +26,12 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <JotaiProvider>
       <DebugAtoms />
       <AtomDevtools>
-        <I18nCustomProvider>
+        <I18nProvider>
           <HelmetProvider>
             <Root />
-            <ToastContainer />
+            <ToastProvider />
           </HelmetProvider>
-        </I18nCustomProvider>
+        </I18nProvider>
       </AtomDevtools>
     </JotaiProvider>
   </React.StrictMode>

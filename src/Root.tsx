@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import { useEffectOnce } from "react-use";
 
-import { darkTheme, lightTheme } from "./plugins/mui";
+import { darkTheme, lightTheme } from "./config/theme";
 import Router from "./router";
 import { useAppStore } from "./store/appStore";
 import { useAuthStore } from "./store/authStore";

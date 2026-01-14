@@ -6,9 +6,9 @@ import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
 import { signUp, User } from "@/api/services/auth";
-import Button from "@/components/shared/Button/Button";
-import CheckboxField from "@/components/shared/CheckboxField/CheckboxField";
-import InputField from "@/components/shared/InputField/InputField";
+import Button from "@/components/ui/Button/Button";
+import CheckboxField from "@/components/ui/CheckboxField/CheckboxField";
+import InputField from "@/components/ui/InputField/InputField";
 import { handleFormikSubmission } from "@/helpers/forms";
 import AuthLayout from "@/layouts/AuthLayout";
 import { awaiter } from "@/utils/common";

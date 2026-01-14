@@ -56,8 +56,10 @@ function AccountMenu() {
         anchorEl={anchorEl}
         open={open}
         onClose={() => handleClose()}
-        MenuListProps={{
-          "aria-labelledby": "account-menu-button",
+        slotProps={{
+          list: {
+            "aria-labelledby": "account-menu-button",
+          },
         }}
       >
         <MenuItem

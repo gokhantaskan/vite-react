@@ -3,9 +3,9 @@ import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
-import Button from "@/components/shared/Button/Button";
-import Dialog from "@/components/shared/Dialog/Dialog";
-import { ThemeSwitch } from "@/components/shared/ThemeSwitch/ThemeSwitch";
+import Button from "@/components/ui/Button/Button";
+import Dialog from "@/components/ui/Dialog/Dialog";
+import { ThemeSwitch } from "@/components/ui/ThemeSwitch/ThemeSwitch";
 
 function DashboardPage() {
   const [dialogOpen, setDialogOpen] = useState(false);

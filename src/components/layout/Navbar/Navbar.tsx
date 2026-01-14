@@ -15,9 +15,8 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import tw from "twin.macro";
 
 import { ReactComponent as Logo } from "@/assets/img/logo.svg";
+import AccountMenu from "@/components/features/AccountMenu/AccountMenu";
 import { useAuthStore } from "@/store/authStore";
-
-import AccountMenu from "../AccountMenu/AccountMenu";
 
 export function Navbar({ className }: { className?: string }) {
   const { t } = useTranslation("common");

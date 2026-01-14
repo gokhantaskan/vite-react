@@ -2,8 +2,8 @@ import styled from "@emotion/styled";
 import { Outlet } from "react-router-dom";
 import tw from "twin.macro";
 
-import { Footer as FooterMain } from "@/components/Footer/Footer";
-import { Navbar as NavbarMain } from "@/components/Navbar/Navbar";
+import { Footer as FooterMain } from "@/components/layout/Footer/Footer";
+import { Navbar as NavbarMain } from "@/components/layout/Navbar/Navbar";
 
 const Layout = styled.div({
   ...tw`grid min-h-screen`,

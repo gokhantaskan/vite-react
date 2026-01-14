@@ -3,8 +3,8 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
 
-import Button from "@/components/shared/Button/Button";
-import InputField from "@/components/shared/InputField/InputField";
+import Button from "@/components/ui/Button/Button";
+import InputField from "@/components/ui/InputField/InputField";
 import { handleFormikSubmission } from "@/helpers/forms";
 import AuthLayout from "@/layouts/AuthLayout";
 

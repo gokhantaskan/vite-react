@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { Fragment } from "react";
 import { toast, ToastBar, Toaster } from "react-hot-toast";
 
-export const ToastContainer = () => {
+export const ToastProvider = () => {
   return (
     <Toaster
       position="bottom-center"

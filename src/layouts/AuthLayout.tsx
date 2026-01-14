@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 import { ReactComponent as Logo } from "@/assets/img/icon.svg";
-import LocaleChanger from "@/components/shared/LocaleChanger/LocaleChanger";
+import LocaleChanger from "@/components/ui/LocaleChanger/LocaleChanger";
 
 interface AuthLayoutProps {
   title: string;
