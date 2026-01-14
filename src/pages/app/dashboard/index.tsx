@@ -23,19 +23,16 @@ function DashboardPage() {
             .fill("")
             .map((_, i) => (
               <p key={i}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit
-                laboriosam in sed temporibus, esse enim repellendus numquam
-                neque ipsum nesciunt nam cumque voluptatibus ea suscipit
-                eligendi nostrum minima quas veniam nobis. Reprehenderit
-                voluptatibus molestiae fuga veritatis doloribus non aliquam
-                repudiandae minus molestias quaerat, nisi explicabo voluptates.
-                Consectetur omnis beatae enim necessitatibus distinctio incidunt
-                porro quaerat aliquid temporibus in quasi aut eum laboriosam
-                excepturi eveniet sequi delectus, ipsa minima obcaecati adipisci
-                dolores quam libero perspiciatis voluptatibus! Quaerat assumenda
-                velit tenetur nesciunt provident ipsam distinctio consequatur
-                aliquid harum dignissimos eligendi cum odit ipsa, vel corrupti
-                recusandae ut commodi eos non?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laboriosam in sed
+                temporibus, esse enim repellendus numquam neque ipsum nesciunt nam cumque
+                voluptatibus ea suscipit eligendi nostrum minima quas veniam nobis. Reprehenderit
+                voluptatibus molestiae fuga veritatis doloribus non aliquam repudiandae minus
+                molestias quaerat, nisi explicabo voluptates. Consectetur omnis beatae enim
+                necessitatibus distinctio incidunt porro quaerat aliquid temporibus in quasi aut eum
+                laboriosam excepturi eveniet sequi delectus, ipsa minima obcaecati adipisci dolores
+                quam libero perspiciatis voluptatibus! Quaerat assumenda velit tenetur nesciunt
+                provident ipsam distinctio consequatur aliquid harum dignissimos eligendi cum odit
+                ipsa, vel corrupti recusandae ut commodi eos non?
               </p>
             ))}
         </div>
@@ -64,18 +61,15 @@ function DashboardPage() {
         title={"Repudiandae corrupti a, ducimus doloribus, pariatur tenetur"}
         titleTag="h2"
       >
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum commodi
-        vitae, quibusdam facere dolores qui dolore eius aliquid, minima earum
-        nobis dolorem, consequuntur molestiae reprehenderit beatae? Dolorum
-        consequatur ullam reprehenderit asperiores. Blanditiis expedita tempore
-        doloribus qui? Fugiat quia ab est, aliquam, quidem laboriosam
-        praesentium animi molestias provident nihil fugit. Sed tempora impedit
-        doloribus eos perferendis dicta reprehenderit consectetur perspiciatis
-        necessitatibus soluta dolore, nihil commodi magnam nam cumque quo iusto
-        optio? Incidunt ipsum voluptatibus itaque soluta deleniti possimus
-        facilis natus accusantium ducimus aperiam asperiores sunt totam
-        doloremque eaque blanditiis vitae, quaerat suscipit sequi ipsa
-        consequuntur velit. Qui animi optio nostrum debitis.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum commodi vitae, quibusdam
+        facere dolores qui dolore eius aliquid, minima earum nobis dolorem, consequuntur molestiae
+        reprehenderit beatae? Dolorum consequatur ullam reprehenderit asperiores. Blanditiis
+        expedita tempore doloribus qui? Fugiat quia ab est, aliquam, quidem laboriosam praesentium
+        animi molestias provident nihil fugit. Sed tempora impedit doloribus eos perferendis dicta
+        reprehenderit consectetur perspiciatis necessitatibus soluta dolore, nihil commodi magnam
+        nam cumque quo iusto optio? Incidunt ipsum voluptatibus itaque soluta deleniti possimus
+        facilis natus accusantium ducimus aperiam asperiores sunt totam doloremque eaque blanditiis
+        vitae, quaerat suscipit sequi ipsa consequuntur velit. Qui animi optio nostrum debitis.
       </Dialog>
     </Fragment>
   );

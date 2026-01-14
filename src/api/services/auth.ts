@@ -4,14 +4,9 @@ export interface User {
   fullName: string;
 }
 
-const getUsers = (): User[] =>
-  JSON.parse(sessionStorage.getItem("users") || "[]");
+const getUsers = (): User[] => JSON.parse(sessionStorage.getItem("users") || "[]");
 
-export async function signUp({
-  email,
-  password,
-  fullName,
-}: User): Promise<User> {
+export async function signUp({ email, password, fullName }: User): Promise<User> {
   return new Promise((resolve, reject) => {
     const users = getUsers();
     const user = { email, password, fullName };

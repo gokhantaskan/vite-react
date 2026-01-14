@@ -2,96 +2,223 @@
 
 [![CI](https://github.com/gokhantaskan/vite-react/actions/workflows/ci.yml/badge.svg)](https://github.com/gokhantaskan/vite-react/actions/workflows/ci.yml)
 
-Vite-React is a scaffold project for quickly setting up a React application with Vite, providing an integrated solution for using Tailwind CSS, Material-UI theme, twin.macro, and other essential libraries.
+A production-ready React scaffold built with Vite, featuring Material-UI, Tailwind CSS, twin.macro, and a comprehensive development toolkit. Designed as a starting point for medium to large React applications with emphasis on developer experience and code quality.
 
-https://astounding-toffee-68b49b.netlify.app/
+**Demo:** https://astounding-toffee-68b49b.netlify.app/
+
+## Table of Contents
+
+- [Tech Stack](#tech-stack)
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Routes](#routes)
+- [Getting Started](#getting-started)
+- [Scripts](#scripts)
+- [Testing](#testing)
+- [Environment Variables](#environment-variables)
+- [Path Aliases](#path-aliases)
+- [Known Issues](#known-issues)
+
+## Tech Stack
+
+### Core
+
+- **React 19** - UI library
+- **Vite 7** - Build tool and dev server
+- **TypeScript 5** - Type safety
+
+### Routing & State
+
+- **React Router DOM 7** - Client-side routing
+- **Jotai** - Primitive atomic state management with DevTools
+- **@loadable/component** - Code splitting and lazy loading
+
+### UI & Styling
+
+- **Material-UI (MUI) 7** - Component library
+- **Tailwind CSS 3** - Utility-first CSS framework
+- **twin.macro** - Tailwind CSS in JS with Emotion
+- **Emotion** - CSS-in-JS styling
+- **SASS** - Extended styling capabilities
+
+### Forms & Validation
+
+- **Formik** - Form state management
+- **Yup** - Schema-based validation
+
+### Internationalization
+
+- **i18next** - i18n framework with English and Turkish support
+
+### Testing
+
+- **Vitest** - Unit testing with coverage
+- **Testing Library** - React component testing
+- **Playwright** - E2E testing across multiple browsers
+
+### Code Quality
+
+- **ESLint 9** - Code linting with TypeScript support
+- **Prettier** - Code formatting
+- **Husky** - Git hooks
+- **Lint-staged** - Pre-commit linting
+- **Commitlint** - Conventional commits enforcement
 
 ## Features
 
-- Pre-configured with Vite for fast development and optimized builds
+- Pre-configured Vite for fast development and optimized builds
 - Integrated styling solution using TailwindCSS, MUI, and twin.macro
-- Integrated multi-language solution using i18n-next
+- Multi-language support (English, Turkish) using i18next
+- Light/Dark theme switching with persistence
 - Centralized theme configuration
 - Type checking throughout development and build processes
-- Essential libraries included:
-  - Formik for form management
-  - Yup for validation
-  - Jotai for state management
-  - React Router for navigation
-  - React Helmet for managing document head
-  - React-use for common hooks
-  - @svgr/rollup for importing SVGs as React components
-  - @loadable/component for lazy loading routes and components
-- Testing setup with Playwright and Vitest
-  - @testing-library with React and jsdom for unit tests
-- Code quality tools: ESLint, Prettier, Husky, Lint Staged, and Commitlint
-- SASS support for extended styling capabilities
+- Authentication flow with protected routes
+- Toast notifications via React Hot Toast
+- Document head management with React Helmet
+- SVG as React components via @svgr/rollup
+- Path aliases (`~`, `@`, `@img`)
+
+## Project Structure
+
+```
+vite-react/
+├── src/
+│   ├── api/services/        # API service modules (e.g., auth.ts)
+│   ├── assets/              # Static assets (SVG, images, styles)
+│   ├── components/          # React components
+│   │   ├── Navbar/          # Feature components
+│   │   ├── loaders/         # Loading UI components
+│   │   └── shared/          # Reusable UI (Button, Dialog, InputField, etc.)
+│   ├── helpers/             # Utility helpers (e.g., form handling)
+│   ├── hooks/               # Custom React hooks
+│   ├── layouts/             # Layout wrappers (AuthLayout, RestrictedLayout)
+│   ├── locales/             # i18n translations (en, tr)
+│   ├── pages/               # Page components (app/*, auth/*)
+│   ├── plugins/             # Provider configs (i18n, MUI theme, toast)
+│   ├── router/              # React Router configuration
+│   ├── store/               # Jotai atoms (appStore, authStore)
+│   ├── styles/              # Global SCSS styles
+│   ├── utils/               # Utility functions
+│   ├── Root.tsx             # Root component with providers
+│   └── main.tsx             # Application entry point
+├── config/                  # Design system defaults (colors, breakpoints)
+├── tests/e2e/               # Playwright E2E tests
+├── types/                   # TypeScript declarations
+└── [config files]           # Vite, TypeScript, ESLint, Prettier, Tailwind, etc.
+```
+
+## Routes
+
+| Path                    | Component      | Description                |
+| ----------------------- | -------------- | -------------------------- |
+| `/`                     | Dashboard      | Main dashboard (protected) |
+| `/settings`             | Settings       | User settings (protected)  |
+| `/auth/login`           | Login          | Sign in page               |
+| `/auth/signup`          | Register       | Sign up page               |
+| `/auth/forgot-password` | ForgotPassword | Password recovery          |
 
 ## Requirements
 
-- Node.js >=20
+- Node.js >= 20
+- pnpm (recommended)
 
-## Known Issues
-
-- The initial takes a bit long time due to the packages and the configuration. Try not to use `--force` flag until it's not necessary.
-- `Playwright` dependencies should be installed if you encounter a problem. Follow the command line for more details.
-- If you get an issue about `husky`, use the code (in project root) below to give it an access to the file system.
+## Getting Started
 
 ```sh
-$ chmod ug+x .husky/*
+# Install dependencies
+pnpm install
+
+# Start development server (opens http://localhost:9090)
+pnpm dev
+
+# Build for production
+pnpm build
 ```
 
-## Usage
+## Scripts
 
-### Scripts
+| Script            | Description                                 |
+| ----------------- | ------------------------------------------- |
+| `dev`             | Start development server                    |
+| `dev:force`       | Clear cache and start development server    |
+| `build`           | Type check and build for production         |
+| `build:staging`   | Type check and build for staging            |
+| `build-only`      | Build with Vite (used internally)           |
+| `preview`         | Preview production build                    |
+| `type-check`      | Check TypeScript types                      |
+| `lint`            | Lint and fix with ESLint                    |
+| `format`          | Format code with Prettier                   |
+| `lf`              | Lint and format in parallel                 |
+| `test:unit`       | Run unit tests with coverage                |
+| `test:unit:watch` | Run unit tests with Vitest UI in watch mode |
+| `test:e2e`        | Run E2E tests with Playwright               |
+| `test:e2e:watch`  | Run E2E tests with Playwright UI            |
+| `test:e2e:ci`     | Run E2E tests in CI environment             |
+| `prepare`         | Install Husky for Git hooks                 |
+| `clear`           | Remove build artifacts and test results     |
 
-`dev`: Start the development server.
+## Testing
 
-`dev:force`: Clear cache and start the development server.
-
-`build`: Run type checking and build the project for production.
-
-`build:staging`: Run type checking and build the project for the staging environment.
-
-`build-only`: Build the project with Vite (used internally by `build` and `build:staging`).
-
-`preview`: Preview the build (either staging or production, it uses `dist`).
-
-`type-check`: Check TypeScript types with `tsc --noEmit`.
-
-`lint`: Lint and fix issues with ESLint.
-
-`format`: Format the code using Prettier.
-
-`lf`: Format and Lint in parallel.
-
-`test:unit`: Run unit tests with Vitest and generate coverage report.
-
-`test:unit:watch`: Run `test:unit` with Vitest **UI** in **watch** mode.
-
-`test:e2e`: Run end-to-end tests with Playwright in the **development** environment.
-
-`test:e2e:watch`: Run `test:e2e` with Playwright **UI** in the **development** environment.
-
-`test:e2e:ci`: Run end-to-end tests with Playwright in the **staging** environment with CI.
-
-`prepare`: Install Husky for Git hooks.
-
-`clear`: Remove ignored files and folders, such as test results, reports, and build artifacts.
-
-### About E2E Tests with [Playwright](https://playwright.dev)
+### Unit Tests (Vitest)
 
 ```sh
-# Install browsers for the first run
+# Run tests with coverage report
+pnpm test:unit
+
+# Interactive UI mode
+pnpm test:unit:watch
+```
+
+Coverage includes `src/components/**`, `src/utils/**`, and `src/helpers/**`.
+
+### E2E Tests (Playwright)
+
+```sh
+# Install browsers (first run)
 npx playwright install --with-deps
 npx playwright install msedge
 
-# When testing on CI, must build the project first
-npm run build
-# or
-npm run build:staging
+# Run E2E tests
+pnpm test:e2e
+
+# Interactive UI mode
+pnpm test:e2e:watch
+
+# CI environment (requires build first)
+pnpm build:staging
+pnpm test:e2e:ci
 ```
 
-`env-cmd` is used for environment variables depending on the stages.
+**Supported browsers:** Chrome, Edge, Firefox, Safari, iPad, Pixel 5, iPhone 11
 
-More details [here](https://www.digitalocean.com/community/tutorials/nodejs-take-command-with-env-cmd#step-2-using-env-cmd).
+## Environment Variables
+
+Environment-specific variables are managed via `.env.*` files:
+
+- `.env.development` - Development environment
+- `.env.staging` - Staging environment
+- `.env.production` - Production environment
+
+Access variables with `import.meta.env.VITE_*`.
+
+## Path Aliases
+
+| Alias  | Path              | Usage            |
+| ------ | ----------------- | ---------------- |
+| `~`    | `/`               | Project root     |
+| `@`    | `/src`            | Source directory |
+| `@img` | `/src/assets/img` | Image assets     |
+
+## Known Issues
+
+- Initial startup may be slow due to package compilation. Avoid using `--force` unless necessary.
+- Playwright dependencies must be installed separately. Follow CLI instructions if errors occur.
+- If Husky permission errors occur, run:
+
+```sh
+chmod ug+x .husky/*
+```
+
+## License
+
+MIT

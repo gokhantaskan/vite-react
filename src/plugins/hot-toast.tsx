@@ -1,5 +1,5 @@
 import { Close } from "@mui/icons-material";
-import IconButton from "@mui/material/IconButton/IconButton";
+import IconButton from "@mui/material/IconButton";
 import clsx from "clsx";
 import { Fragment } from "react";
 import { toast, ToastBar, Toaster } from "react-hot-toast";
@@ -9,7 +9,7 @@ export const ToastContainer = () => {
     <Toaster
       position="bottom-center"
       toastOptions={{
-        duration: 500000000,
+        duration: 1_000_000,
         className: clsx(
           "!rounded shadow-lg",
           "light:bg-gray-50 light:text-gray-900",

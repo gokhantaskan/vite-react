@@ -10,18 +10,12 @@ const timeout = 1;
 const App = loadable(() => pMinDelay(import("@/pages/app"), timeout), {
   fallback: <PageLoader />,
 });
-const LoginPage = loadable(
-  () => pMinDelay(import("@/pages/auth/login"), timeout),
-  {
-    fallback: <PageLoader />,
-  }
-);
-const RegisterPage = loadable(
-  () => pMinDelay(import("@/pages/auth/register"), timeout),
-  {
-    fallback: <PageLoader />,
-  }
-);
+const LoginPage = loadable(() => pMinDelay(import("@/pages/auth/login"), timeout), {
+  fallback: <PageLoader />,
+});
+const RegisterPage = loadable(() => pMinDelay(import("@/pages/auth/register"), timeout), {
+  fallback: <PageLoader />,
+});
 const ForgotPasswordPage = loadable(
   () => pMinDelay(import("@/pages/auth/forgot-password"), timeout),
   {

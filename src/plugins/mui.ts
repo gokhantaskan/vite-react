@@ -1,9 +1,4 @@
-import {
-  Breakpoints,
-  createTheme,
-  Shadows,
-  ThemeOptions,
-} from "@mui/material/styles";
+import { Breakpoints, createTheme, Shadows, ThemeOptions } from "@mui/material/styles";
 import chroma from "chroma-js";
 
 import { borderRadius, boxShadow, colors, screens } from "~/config/defaults";
@@ -67,8 +62,7 @@ const defaultOptions: Partial<ThemeOptions> = {
     MuiBackdrop: {
       styleOverrides: {
         root: ({ theme }) => ({
-          backgroundColor:
-            theme.palette.mode === "dark" ? grayAlphaDark() : grayAlphaLight(),
+          backgroundColor: theme.palette.mode === "dark" ? grayAlphaDark() : grayAlphaLight(),
           // "&.MuiModal-backdrop": {
           //   backdropFilter: "blur(3px)",
           //   willChange: "backdrop-filter",
@@ -113,16 +107,10 @@ const defaultOptions: Partial<ThemeOptions> = {
       styleOverrides: {
         root: ({ theme }) => ({
           "&.Mui-focusVisible": {
-            backgroundColor:
-              theme.palette.mode === "light"
-                ? colors.gray[100]
-                : colors.gray[700],
+            backgroundColor: theme.palette.mode === "light" ? colors.gray[100] : colors.gray[700],
           },
           "&:hover": {
-            backgroundColor:
-              theme.palette.mode === "light"
-                ? colors.gray[200]
-                : colors.gray[600],
+            backgroundColor: theme.palette.mode === "light" ? colors.gray[200] : colors.gray[600],
           },
         }),
       },
@@ -175,10 +163,7 @@ const defaultOptions: Partial<ThemeOptions> = {
       styleOverrides: {
         root: ({ theme }) => {
           return {
-            color:
-              theme.palette.mode === "dark"
-                ? grayAlphaLight(0.75)
-                : grayAlphaDark(0.75),
+            color: theme.palette.mode === "dark" ? grayAlphaLight(0.75) : grayAlphaDark(0.75),
           };
         },
       },
@@ -203,10 +188,7 @@ const defaultOptions: Partial<ThemeOptions> = {
     MuiCheckbox: {
       styleOverrides: {
         root: ({ theme }) => ({
-          color:
-            theme.palette.mode === "dark"
-              ? grayAlphaLight(0.5)
-              : grayAlphaDark(0.5),
+          color: theme.palette.mode === "dark" ? grayAlphaLight(0.5) : grayAlphaDark(0.5),
         }),
       },
     },

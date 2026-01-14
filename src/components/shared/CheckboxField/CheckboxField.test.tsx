@@ -60,8 +60,6 @@ describe("CheckboxField", () => {
     renderForm();
     const button = screen.getByRole("button");
     fireEvent.click(button);
-    expect(
-      await screen.findByText("Accepting terms is required")
-    ).toBeInTheDocument();
+    expect(await screen.findByText("Accepting terms is required")).toBeInTheDocument();
   });
 });
