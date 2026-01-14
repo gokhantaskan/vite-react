@@ -1,4 +1,5 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { describe, expect, test, vi } from "vitest";
 
 import Button, { ButtonProps } from "./Button";
@@ -47,7 +48,8 @@ describe("Button", () => {
     expect(buttonElement).toBeDisabled();
   });
 
-  test("calls onClick when the button is clicked", () => {
+  test("calls onClick when the button is clicked", async () => {
+    const user = userEvent.setup();
     const handleClick = vi.fn();
     render(
       <Button
@@ -56,7 +58,7 @@ describe("Button", () => {
       />
     );
     const buttonElement = screen.getByRole("button");
-    fireEvent.click(buttonElement);
+    await user.click(buttonElement);
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
 });

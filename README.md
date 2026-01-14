@@ -4,7 +4,7 @@
 
 A production-ready React scaffold built with Vite, featuring Material-UI, Tailwind CSS, twin.macro, and a comprehensive development toolkit. Designed as a starting point for medium to large React applications with emphasis on developer experience and code quality.
 
-**Demo:** https://astounding-toffee-68b49b.netlify.app/
+**Demo:** https://extraordinary-meerkat-398bc9.netlify.app
 
 ## Table of Contents
 
@@ -190,6 +190,21 @@ pnpm test:e2e:ci
 ```
 
 **Supported browsers:** Chrome, Edge, Firefox, Safari, iPad, Pixel 5, iPhone 11
+
+### Local CI Testing (act)
+
+You can run GitHub Actions workflows locally using [act](https://github.com/nektos/act).
+
+```sh
+# Install act (macOS)
+brew install act
+
+# Run CI workflow locally
+act
+
+# For Apple Silicon Macs, use:
+act --container-architecture linux/amd64
+```
 
 ## Environment Variables
 

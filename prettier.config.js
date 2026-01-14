@@ -1,5 +1,4 @@
-import type { Config } from "prettier";
-
+/** @type {import('prettier').Config} */
 export default {
   arrowParens: "avoid",
   semi: true,
@@ -10,4 +9,4 @@ export default {
   quoteProps: "as-needed",
   printWidth: 100,
   trailingComma: "es5",
-} as Config;
+};

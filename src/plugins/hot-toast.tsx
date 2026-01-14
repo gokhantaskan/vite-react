@@ -9,7 +9,7 @@ export const ToastContainer = () => {
     <Toaster
       position="bottom-center"
       toastOptions={{
-        duration: 1_000_000,
+        duration: 5_000,
         className: clsx(
           "!rounded shadow-lg",
           "light:bg-gray-50 light:text-gray-900",
